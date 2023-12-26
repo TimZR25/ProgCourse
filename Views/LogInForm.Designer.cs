@@ -149,8 +149,11 @@
             Controls.Add(textBoxPassword);
             Controls.Add(textBoxLogin);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
             Name = "LogInForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LogIn";
             ResumeLayout(false);
             PerformLayout();

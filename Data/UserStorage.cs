@@ -8,11 +8,11 @@ using ProgCourse.Models;
 
 namespace ProgCourse.Data
 {
-    internal abstract class UserStorage : IBaseStorage<UserEntity>
+    public abstract class UserStorage : IBaseStorage<IUserEntity>
     {
-        protected List<UserEntity> _users = new();
+        protected List<IUserEntity> _users = new();
 
-        public bool Add(UserEntity user)
+        public bool Add(IUserEntity user)
         {
             if (user == null || Contains(user)) return false;
 
@@ -21,7 +21,7 @@ namespace ProgCourse.Data
             return true;
         }
 
-        public bool Remove(UserEntity entity)
+        public bool Remove(IUserEntity entity)
         {
             if (!_users.Contains(entity)) return false;
 
@@ -30,22 +30,21 @@ namespace ProgCourse.Data
             return true;
         }
 
-        public ReadOnlyCollection<UserEntity> GetAll()
+        public IReadOnlyCollection<IUserEntity> GetAll()
         {
             return _users.AsReadOnly();
         }
 
-        public bool Contains(UserEntity entity)
+        public bool Contains(IUserEntity entity)
         {
             if (_users.Count <= 0) return false;
 
-            foreach (UserEntity user in _users)
+            foreach (IUserEntity user in _users)
             {
-                if (entity.Login != user.Login) return false;
-                if (entity.Password != user.Password) return false;
+                if (entity.Login == user.Login) return true;
             }
 
-            return true;
+            return false;
         }
 
         public abstract bool Load();

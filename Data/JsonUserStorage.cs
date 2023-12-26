@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Data
 {
-    internal class JsonUserStorage : UserStorage
+    public class JsonUserStorage : UserStorage
     {
         private string _path;
+
+        private JsonSerializerSettings _settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 
         public JsonUserStorage(string path)
         {
@@ -21,7 +23,7 @@ namespace ProgCourse.Data
         public override bool Load()
         {
             var users = File.Exists(_path)
-                ? JsonConvert.DeserializeObject<List<UserEntity>>(File.ReadAllText(_path))
+                ? JsonConvert.DeserializeObject<List<IUserEntity>>(File.ReadAllText(_path), _settings)
                 : null;
 
             if (users == null) return false;
@@ -35,7 +37,7 @@ namespace ProgCourse.Data
         {
             if (_users.Count <= 0) return false;
 
-            File.WriteAllText("users.json", JsonConvert.SerializeObject(_users, Formatting.Indented));
+            File.WriteAllText("users.json", JsonConvert.SerializeObject(_users, Formatting.Indented, _settings));
 
             return true;
         }
