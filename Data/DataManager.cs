@@ -35,24 +35,54 @@ namespace ProgCourse.Data
             UserStorage.Save();
         }
 
-        public bool TrySignUpUser(string login, string password)
+        public bool TrySignUpUser(string login, string password, out string errorText)
         {
+            errorText = string.Empty;
+
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            {
+                errorText = "Пустое значение логина или пароля";
+                return false;
+            }
+
             password = HashConverter.ToHashString(password);
 
-            IUserEntity user = new UserEntity(login, password);
+            var user = (from x in UserStorage.GetAll()
+                        where x.Login == login && x.Password == password
+                        select x).FirstOrDefault();
 
-            return UserStorage.Add(user);
+            if (user != null)
+            {
+                errorText = "Такой пользователь уже существует";
+                return false;
+            }
+
+            IUserEntity userForRegister = new UserEntity(login, password);
+
+            return UserStorage.Add(userForRegister);
         }
 
-        public bool TryLogInUser(string login, string password)
+        public bool TryLogInUser(string login, string password, out string errorText)
         {
+            errorText = string.Empty;
+
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            {
+                errorText = "Пустое поле логина или пароля";
+                return false;
+            }
+
             password = HashConverter.ToHashString(password);
 
             var user = (from x in UserStorage.GetAll()
                        where x.Login == login && x.Password == password
                        select x).FirstOrDefault();
 
-            if (user == null) return false;
+            if (user == null)
+            {
+                errorText = "Неверный логин или пароль";
+                return false;
+            }
             
             _currentUser = user;
 

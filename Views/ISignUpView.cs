@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Forms
 {
-    public interface ISignUpForm
+    public interface ISignUpView : IView
     {
         public string Login { get; }
         public string Password { get; }
-
-        public event EventHandler? OnClicked;
     }
 }

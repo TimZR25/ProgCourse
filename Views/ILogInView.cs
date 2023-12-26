@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Forms
 {
-    public interface ILogInForm
+    public interface ILogInView : IView
     {
         public string Login { get; }
         public string Password { get; }
-
-        public event EventHandler? OnClicked;
     }
 }

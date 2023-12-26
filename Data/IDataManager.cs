@@ -15,7 +15,7 @@ namespace ProgCourse.Data
         public void LoadAll();
         public void SaveAll();
 
-        public bool TrySignUpUser(string login, string password);
-        public bool TryLogInUser(string login, string password);
+        public bool TrySignUpUser(string login, string password, out string errorText);
+        public bool TryLogInUser(string login, string password, out string errorText);
     }
 }

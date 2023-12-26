@@ -2,25 +2,31 @@ using Newtonsoft.Json;
 using ProgCourse.Data;
 using ProgCourse.Forms;
 using ProgCourse.Models;
-using ProgCourse.Presenter;
+using ProgCourse.Presenters;
 using System.Windows.Forms.VisualStyles;
 
 namespace ProgCourse
 {
-    public partial class LogInForm : Form, ILogInForm
+    public partial class LogInForm : Form, ILogInView
     {
-        private LogInPresenter _presenter;
-
         public string Login => textBoxLogin.Text;
         public string Password => textBoxPassword.Text;
 
-        public event EventHandler? OnClicked;
+        public IViewsProvider ViewsProvider { get; }
 
-        public LogInForm()
+        public event Action? OnViewClosed;
+
+        private ILogInPresenter _presenter;
+
+        public LogInForm(IViewsProvider viewsProvider, ILogInPresenter logInPresenter)
         {
             InitializeComponent();
 
-            _presenter = new LogInPresenter(this);
+            ViewsProvider = viewsProvider;
+
+            FormClosed += (_, _) => OnViewClosed?.Invoke();
+
+            _presenter = logInPresenter;
 
             _presenter.OnErrored += ShowError;
         }
@@ -29,13 +35,12 @@ namespace ProgCourse
         {
             labelError.Hide();
 
-            if (_presenter.LogIn() == true) Close();
+            if (_presenter.TryLogIn() == true) Close();
         }
 
         private void labelSignUp_Click(object sender, EventArgs e)
         {
-            SignUpForm signUpForm = new SignUpForm(this);
-            signUpForm.ShowDialog();
+            ViewsProvider.Show(ViewType.SignUp);
         }
 
         private void checkBoxPasswordView_CheckedChanged(object sender, EventArgs e)
@@ -47,6 +52,11 @@ namespace ProgCourse
         {
             labelError.Text = message;
             labelError.Show();
+        }
+
+        void IView.ShowDialog()
+        {
+            ShowDialog();
         }
     }
 }
