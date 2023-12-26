@@ -1,19 +1,20 @@
 using Newtonsoft.Json;
 using ProgCourse.Data;
+using ProgCourse.Forms;
 using ProgCourse.Models;
 using ProgCourse.Presenter;
 using System.Windows.Forms.VisualStyles;
 
 namespace ProgCourse
 {
-    public partial class LogInForm : Form, IUserEntity
+    public partial class LogInForm : Form, ILogInForm
     {
         private LogInPresenter _presenter;
 
         public string Login => textBoxLogin.Text;
         public string Password => textBoxPassword.Text;
 
-        public EventHandler? OnClicked;
+        public event EventHandler? OnClicked;
 
         public LogInForm()
         {
@@ -28,7 +29,7 @@ namespace ProgCourse
         {
             labelError.Hide();
 
-            OnClicked?.Invoke(this, e);
+            if (_presenter.LogIn() == true) Close();
         }
 
         private void labelSignUp_Click(object sender, EventArgs e)

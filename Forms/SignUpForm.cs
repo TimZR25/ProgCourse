@@ -1,9 +1,10 @@
+using ProgCourse.Forms;
 using ProgCourse.Models;
 using ProgCourse.Presenter;
 
 namespace ProgCourse
 {
-    public partial class SignUpForm : Form, IUserEntity
+    public partial class SignUpForm : Form, ISignUpForm
     {
         private Form _previousForm;
 
@@ -12,7 +13,7 @@ namespace ProgCourse
         public string Login => textBoxLogin.Text;
         public string Password => textBoxPassword.Text;
 
-        public EventHandler? OnClicked;
+        public event EventHandler? OnClicked;
 
         public SignUpForm(Form previous)
         {

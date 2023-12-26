@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Presenter
 {
-    internal class SignUpPresenter
+    public class SignUpPresenter
     {
         private SignUpForm _form;
 

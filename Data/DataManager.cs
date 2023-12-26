@@ -8,12 +8,17 @@ using ProgCourse.Utilities;
 
 namespace ProgCourse.Data
 {
-    internal class DataManager : IDataManager
+    public class DataManager : IDataManager
     {
-        private UserEntity? _currentUser = null;
+        private IUserEntity? _currentUser = null;
 
-        public UserStorage UserStorage {  get; }
-        public UserEntity? CurrentUser => _currentUser;
+        public IUserEntity? CurrentUser
+        {
+            get { return _currentUser; }
+            set { _currentUser = value; }
+        }
+
+        public IBaseStorage<IUserEntity> UserStorage {  get; set; }
 
         public DataManager(UserStorage userStorage)
         {
@@ -34,7 +39,7 @@ namespace ProgCourse.Data
         {
             password = HashConverter.ToHashString(password);
 
-            UserEntity user = new UserEntity(login, password);
+            IUserEntity user = new UserEntity(login, password);
 
             return UserStorage.Add(user);
         }

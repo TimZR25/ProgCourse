@@ -7,10 +7,10 @@ using ProgCourse.Models;
 
 namespace ProgCourse.Data
 {
-    internal interface IDataManager
+    public interface IDataManager
     {
-        public UserStorage UserStorage { get; }
-        public UserEntity? CurrentUser { get; }
+        public IBaseStorage<IUserEntity> UserStorage { get; set; }
+        public IUserEntity? CurrentUser { get; set; }
 
         public void LoadAll();
         public void SaveAll();

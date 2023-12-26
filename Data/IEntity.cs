@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Data
 {
-    internal interface IEntity
+    public interface IEntity
     {
     }
 }

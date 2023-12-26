@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProgCourse.Forms;
 
 namespace ProgCourse.Presenter
 {
-    internal class LogInPresenter
+    public class LogInPresenter
     {
-        private LogInForm _form;
+        private ILogInForm _form;
 
-        public EventHandler<string>? OnErrored;
+        public event EventHandler<string>? OnErrored;
+        public event EventHandler? OnLogging;
 
         public LogInPresenter(LogInForm form)
         {
             _form = form;
-
-            _form.OnClicked += LogIn;
         }
 
-        private void LogIn(object? sender, EventArgs e)
+        public bool LogIn()
         {
             if (!Program.DataManager.TryLogInUser(_form.Login, _form.Password))
             {
                 OnErrored?.Invoke(this, "Неправильный логин или пароль");
-                return;
+                return false;
             }
 
-            _form.Close();
+            return true;
         }
     }
 }
