@@ -2,7 +2,6 @@ using ProgCourse.Data;
 using ProgCourse.Data.CinemaHall;
 using ProgCourse.Data.User;
 using ProgCourse.Forms;
-using ProgCourse.Models;
 using ProgCourse.Presenters;
 using ProgCourse.Services;
 using ProgCourse.Views;
@@ -46,7 +45,7 @@ namespace ProgCourse
             viewsProvider.Register(ViewType.CinemaHall, cinemaHallView);
 
             
-            cinemaHallPresenter.InitCinemaHall(0);
+            cinemaHallPresenter.InitCinemaHall(2);
 
             viewsProvider.SetCurrentView(ViewType.CinemaHall);
             Application.Run(viewsProvider.CurrentView as Form);

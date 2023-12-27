@@ -3,6 +3,7 @@ using ProgCourse.Data;
 using ProgCourse.Forms;
 using ProgCourse.Models;
 using ProgCourse.Presenters;
+using ProgCourse.Views;
 using System.Windows.Forms.VisualStyles;
 
 namespace ProgCourse
@@ -52,11 +53,6 @@ namespace ProgCourse
         {
             labelError.Text = message;
             labelError.Show();
-        }
-
-        void IView.ShowDialog()
-        {
-            ShowDialog();
         }
     }
 }

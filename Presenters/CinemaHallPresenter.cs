@@ -33,14 +33,14 @@ namespace ProgCourse.Presenters
 
         public bool InitCinemaHall(int cinemaHallNumber)
         {
-            CinemaHallService cineService = new CinemaHallService(_dataManager.CinemaHallRepository);
+            CinemaHallService cinemaService = new CinemaHallService(_dataManager.CinemaHallRepository);
             ICinemaHall cinemaHall = new CinemaHall();
 
-            if (cineService.TryInitCinemaHall(cinemaHallNumber, ref cinemaHall))
+            if (cinemaService.TryInitCinemaHall(cinemaHallNumber, out cinemaHall))
             {
                 CinemaHall = cinemaHall;
 
-                CinemaHall.OnSeatChanged += SeatChanged;
+                CinemaHall.OnSeatChanged += SeatStateChanged;
                 _view?.Init(CinemaHall.SideSize);
 
                 return true;
@@ -54,7 +54,7 @@ namespace ProgCourse.Presenters
             CinemaHall?.SeatClick(id);
         }
 
-        public void SeatChanged(int id)
+        public void SeatStateChanged(int id)
         {
             if (CinemaHall is null) return;
 

@@ -61,11 +61,6 @@ namespace ProgCourse.Views
             Size = new Size(Size.Width + offsetButton + buttonBuy.Width, Size.Height);
         }
 
-        void IView.ShowDialog()
-        {
-            ShowDialog();
-        }
-
         public void ChangeSeatColor(int id, SeatState seatState)
         {
             Color color = Color.White;

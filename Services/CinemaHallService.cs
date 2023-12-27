@@ -18,8 +18,10 @@ namespace ProgCourse.Services
             _cinemaHallRepository = cinemaHallRepository;
         }
 
-        public bool TryInitCinemaHall(int cinemaHallNumber, ref ICinemaHall cinemaHall)
+        public bool TryInitCinemaHall(int cinemaHallNumber, out ICinemaHall cinemaHall)
         {
+            cinemaHall = new CinemaHall();
+
             List<ICinemaHallEntity> cinemaHalls = _cinemaHallRepository.GetAll().ToList();
 
             if (cinemaHallNumber > cinemaHalls.Count) throw new Exception("Попытка получить несуществующий зал");
