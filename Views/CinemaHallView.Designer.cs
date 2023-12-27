@@ -28,18 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            buttonBuy = new Button();
             SuspendLayout();
+            // 
+            // buttonBuy
+            // 
+            buttonBuy.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonBuy.Location = new Point(97, 171);
+            buttonBuy.Name = "buttonBuy";
+            buttonBuy.Size = new Size(125, 39);
+            buttonBuy.TabIndex = 0;
+            buttonBuy.Text = "Купить";
+            buttonBuy.UseVisualStyleBackColor = true;
             // 
             // CinemaHallView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(862, 635);
+            AutoSize = true;
+            ClientSize = new Size(245, 247);
+            Controls.Add(buttonBuy);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "CinemaHallView";
             Text = "CinemaHallView";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button buttonBuy;
     }
 }

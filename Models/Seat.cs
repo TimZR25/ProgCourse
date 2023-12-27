@@ -9,17 +9,17 @@ namespace ProgCourse.Models
     public class Seat : ISeat
     {
         public int ID { get; }
-        public TypeSeat TypeSeat { get; set; }
+        public SeatState SeatState { get; set; }
 
-        public Seat(int id, TypeSeat typeSeat)
+        public Seat(int id, SeatState typeSeat)
         {
             ID = id;
-            TypeSeat = typeSeat;
+            SeatState = typeSeat;
         }
 
         public void Click()
         {
-            TypeSeat = (TypeSeat)(((int)TypeSeat + 1) % 2);
+            SeatState = (SeatState)(((int)SeatState + 1) % 2);
         }
     }
 }

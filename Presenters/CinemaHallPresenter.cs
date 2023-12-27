@@ -1,6 +1,7 @@
 ﻿using ProgCourse.Data;
 using ProgCourse.Data.CinemaHall;
 using ProgCourse.Models;
+using ProgCourse.Services;
 using ProgCourse.Views;
 using System;
 using System.Collections.Generic;
@@ -30,34 +31,22 @@ namespace ProgCourse.Presenters
             _view = view;
         }
 
-        public void Test(ICinemaHallEntity cinemaHall)
+        public bool InitCinemaHall(int cinemaHallNumber)
         {
-            CinemaHall = new CinemaHall(cinemaHall);
+            CinemaHallService cineService = new CinemaHallService(_dataManager.CinemaHallRepository);
+            ICinemaHall cinemaHall = new CinemaHall();
 
-            CinemaHall.OnSeatChanged += SeatChanged;
-
-            _view?.Init(CinemaHall.SideSize);
-        }
-
-        public void InitCinemaHall(int cinemaHallNumber)
-        {
-            List<ICinemaHallEntity> cinemaHalls = _dataManager.CinemaHallRepository.GetAll().ToList();
-
-            if (cinemaHallNumber > cinemaHalls.Count) throw new Exception("Попытка получить несуществующий зал");
-
-            foreach (ICinemaHallEntity cinemaHall in cinemaHalls)
+            if (cineService.TryInitCinemaHall(cinemaHallNumber, ref cinemaHall))
             {
-                if (cinemaHall.Number == cinemaHallNumber)
-                {
-                    CinemaHall = new CinemaHall(cinemaHall);
+                CinemaHall = cinemaHall;
 
-                    CinemaHall.OnSeatChanged += SeatChanged;
+                CinemaHall.OnSeatChanged += SeatChanged;
+                _view?.Init(CinemaHall.SideSize);
 
-                    _view?.Init(CinemaHall.SideSize);
-
-                    return;
-                }
+                return true;
             }
+
+            return false;
         }
 
         public void SeatClick(int id)
@@ -67,24 +56,11 @@ namespace ProgCourse.Presenters
 
         public void SeatChanged(int id)
         {
-            Color color = Color.White;
+            if (CinemaHall is null) return;
 
-            switch (CinemaHall?.Seats[id].TypeSeat)
-            {
-                case TypeSeat.Freely:
-                    color = Color.Green;
-                    break;
-                case TypeSeat.Sold:
-                    color = Color.Red;
-                    break;
-                case TypeSeat.Booked:
-                    color = Color.Orange;
-                    break;
-                default:
-                    break;
-            }
+            SeatState seatState = CinemaHall.Seats[id].SeatState;
 
-            _view?.ChangeSeatColor(id, color);
+            _view?.ChangeSeatColor(id, seatState);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ProgCourse.Models
 {
-    public enum TypeSeat
+    public enum SeatState
     {
         Freely, Booked, Sold
     }

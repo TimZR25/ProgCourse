@@ -34,6 +34,9 @@ namespace ProgCourse.Views
 
         public void Init(int sideSize)
         {
+            int buttonSize = 40;
+            int offsetButton = 50;
+
             for (int i = 0; i < sideSize; i++)
             {
                 for (int j = 0; j < sideSize; j++)
@@ -41,8 +44,8 @@ namespace ProgCourse.Views
                     int numberSeat = i * sideSize + j + 1;
                     Button seatView = new Button
                     {
-                        Location = new Point(50 * j + 25, 50 * i),
-                        Size = new Size(40, 40),
+                        Location = new Point(offsetButton * j + 25, offsetButton * i),
+                        Size = new Size(buttonSize, buttonSize),
                         Text = $"{numberSeat}",
                         BackColor = Color.Green,
                         ForeColor = Color.White
@@ -54,6 +57,8 @@ namespace ProgCourse.Views
                     Controls.Add(seatView);
                 }
             }
+
+            Size = new Size(Size.Width + offsetButton + buttonBuy.Width, Size.Height);
         }
 
         void IView.ShowDialog()
@@ -61,8 +66,25 @@ namespace ProgCourse.Views
             ShowDialog();
         }
 
-        public void ChangeSeatColor(int id, Color color)
+        public void ChangeSeatColor(int id, SeatState seatState)
         {
+            Color color = Color.White;
+
+            switch (seatState)
+            {
+                case SeatState.Freely:
+                    color = Color.Green;
+                    break;
+                case SeatState.Sold:
+                    color = Color.Red;
+                    break;
+                case SeatState.Booked:
+                    color = Color.Orange;
+                    break;
+                default:
+                    break;
+            }
+
             SeatViews[id].BackColor = color;
         }
     }

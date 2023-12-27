@@ -1,4 +1,5 @@
 ﻿using ProgCourse.Forms;
+using ProgCourse.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,6 @@ namespace ProgCourse.Views
         public Dictionary<int, Button> SeatViews { get; set; }
 
         public void Init(int sideSize);
-        public void ChangeSeatColor(int id, Color color);
+        public void ChangeSeatColor(int id, SeatState seatState);
     }
 }

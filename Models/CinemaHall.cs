@@ -35,7 +35,7 @@ namespace ProgCourse.Models
                 for (int j = 0; j < sideSize; j++)
                 {
                     int numberSeat = i * sideSize + j + 1;
-                    ISeat seat = new Seat(numberSeat, TypeSeat.Freely);
+                    ISeat seat = new Seat(numberSeat, SeatState.Freely);
 
                     Seats.Add(numberSeat, seat);
                 }

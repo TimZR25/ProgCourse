@@ -4,6 +4,7 @@ using ProgCourse.Data.User;
 using ProgCourse.Forms;
 using ProgCourse.Models;
 using ProgCourse.Presenters;
+using ProgCourse.Services;
 using ProgCourse.Views;
 
 namespace ProgCourse
@@ -23,12 +24,13 @@ namespace ProgCourse
             CinemaHallRepository cinemaHallRepositories = new JSONCinemaHallRepository("cinemaHalls.json");
 
             DataManager dataManager = new DataManager(userStorage, cinemaHallRepositories);
-
+            ISignUpService signUpService = new SignUpService(dataManager.UserRepository);
+            ILogInService logInService = new LogInService(dataManager.UserRepository);
 
             dataManager.LoadAll();
 
-            ISignUpPresenter signUpPresenter = new SignUpPresenter(dataManager);
-            ILogInPresenter logInPresenter = new LogInPresenter(dataManager);
+            ISignUpPresenter signUpPresenter = new SignUpPresenter(signUpService);
+            ILogInPresenter logInPresenter = new LogInPresenter(logInService);
             ICinemaHallPresenter cinemaHallPresenter = new CinemaHallPresenter(dataManager);
 
             ILogInView logInView = new LogInForm(viewsProvider, logInPresenter);
@@ -43,16 +45,11 @@ namespace ProgCourse
             viewsProvider.Register(ViewType.SignUp, signUpView);
             viewsProvider.Register(ViewType.CinemaHall, cinemaHallView);
 
-            int sideSize = 10, hallNumber = 0;
-
-            dataManager.CinemaHallRepository.Add(new CinemaHall(hallNumber, sideSize));
-
-            dataManager.SaveAll();
-
-            cinemaHallPresenter.InitCinemaHall(hallNumber);
+            
+            cinemaHallPresenter.InitCinemaHall(0);
 
             viewsProvider.SetCurrentView(ViewType.CinemaHall);
-            Application.Run(viewsProvider.CurrentView as Form ?? null);
+            Application.Run(viewsProvider.CurrentView as Form);
         }
     }
 }

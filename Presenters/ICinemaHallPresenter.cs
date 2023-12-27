@@ -13,6 +13,6 @@ namespace ProgCourse.Presenters
         ICinemaHall? CinemaHall { get; set; }
         void SeatClick(int id);
         void Init(ICinemaHallView view);
-        void InitCinemaHall(int cinemaNumber);
+        bool InitCinemaHall(int cinemaNumber);
     }
 }

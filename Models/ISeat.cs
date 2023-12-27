@@ -3,7 +3,7 @@
     public interface ISeat
     {
         int ID { get; }
-        TypeSeat TypeSeat { get; set; }
+        SeatState SeatState { get; set; }
 
         void Click();
     }
