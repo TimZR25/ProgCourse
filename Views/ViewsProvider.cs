@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -24,14 +25,14 @@ namespace ProgCourse.Forms
 
         public void SetCurrentView(ViewType viewType)
         {
-            if (!_views.ContainsKey(viewType)) return;
+            if (_views.ContainsKey(viewType) == false) throw new Exception("Незарегистрированное окно");
 
             _currentView = _views[viewType];
         }
 
         public void Show(ViewType viewType)
         {
-            if (!_views.ContainsKey(viewType)) return;
+            if (_views.ContainsKey(viewType) == false) throw new Exception("Незарегистрированное окно");
 
             if (_currentView != null)
             {

@@ -5,22 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using ProgCourse.Data;
 using ProgCourse.Forms;
+using ProgCourse.Services;
 
 namespace ProgCourse.Presenters
 {
     public class LogInPresenter : ILogInPresenter
     {
-        private IDataManager _dataManager;
+        private ILogInService _logInService;
 
         private ILogInView? _view;
-        public IView? View => _view;
 
         public event EventHandler<string>? OnErrored;
-        public event EventHandler? OnLogging;
 
-        public LogInPresenter(IDataManager dataManager)
+        public LogInPresenter(ILogInService logInService)
         {
-            _dataManager = dataManager;
+            _logInService = logInService;
         }
 
         public void Init(ILogInView view)
@@ -32,7 +31,7 @@ namespace ProgCourse.Presenters
         {
             if (_view == null) return false;
 
-            if (_dataManager.TryLogInUser(_view.Login, _view.Password, out string errorText) == false)
+            if (_logInService.TryLogInUser(_view.Login, _view.Password, out string errorText) == false)
             {
                 OnErrored?.Invoke(this, errorText);
                 return false;
