@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Presenters
 {
-    public interface ISignUpPresenter : IPresenter
+    public interface ISignUpPresenter
     {
-        public void Init(ISignUpView view);
-        public event EventHandler<string>? OnErrored;
+        void Init(ISignUpView view);
+        event EventHandler<string>? OnErrored;
 
-        public bool TrySignUp();
+        bool TrySignUp();
     }
 }

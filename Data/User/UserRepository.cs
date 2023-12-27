@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ProgCourse.Models;
 
-namespace ProgCourse.Data
+namespace ProgCourse.Data.User
 {
-    public abstract class UserStorage : IBaseStorage<IUserEntity>
+    public abstract class UserRepository : IBaseRepository<IUserEntity>
     {
         protected List<IUserEntity> _users = new();
 
@@ -26,6 +26,15 @@ namespace ProgCourse.Data
             if (!_users.Contains(entity)) return false;
 
             _users.Remove(entity);
+
+            return true;
+        }
+
+        public bool RemoveAll()
+        {
+            if (_users.Count <= 0) return false;
+
+            _users.Clear();
 
             return true;
         }

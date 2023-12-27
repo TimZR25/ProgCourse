@@ -17,6 +17,6 @@ namespace ProgCourse.Forms
 
     public enum ViewType
     {
-        LogIn, SignUp
+        LogIn, SignUp, CinemaHall
     }
 }

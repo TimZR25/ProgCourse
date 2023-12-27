@@ -15,7 +15,6 @@ namespace ProgCourse.Presenters
         IDataManager _dataManager;
 
         private ISignUpView? _view;
-        public IView? View => _view;
 
         public event EventHandler<string>? OnErrored;
 

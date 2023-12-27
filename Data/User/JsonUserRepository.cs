@@ -7,23 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgCourse.Data
+namespace ProgCourse.Data.User
 {
-    public class JsonUserStorage : UserStorage
+    public class JsonUserRepository : UserRepository
     {
         private string _path;
 
-        private JsonSerializerSettings _settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
-
-        public JsonUserStorage(string path)
+        public JsonUserRepository(string path)
         {
             _path = path;
         }
 
         public override bool Load()
         {
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+
             var users = File.Exists(_path)
-                ? JsonConvert.DeserializeObject<List<IUserEntity>>(File.ReadAllText(_path), _settings)
+                ? JsonConvert.DeserializeObject<List<IUserEntity>>(File.ReadAllText(_path), settings)
                 : null;
 
             if (users == null) return false;
@@ -37,7 +37,9 @@ namespace ProgCourse.Data
         {
             if (_users.Count <= 0) return false;
 
-            File.WriteAllText("users.json", JsonConvert.SerializeObject(_users, Formatting.Indented, _settings));
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+
+            File.WriteAllText(_path, JsonConvert.SerializeObject(_users, Formatting.Indented, settings));
 
             return true;
         }

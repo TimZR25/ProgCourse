@@ -13,10 +13,8 @@ namespace ProgCourse.Presenters
         private IDataManager _dataManager;
 
         private ILogInView? _view;
-        public IView? View => _view;
 
         public event EventHandler<string>? OnErrored;
-        public event EventHandler? OnLogging;
 
         public LogInPresenter(IDataManager dataManager)
         {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProgCourse.Data.CinemaHall;
+using ProgCourse.Data.User;
 using ProgCourse.Models;
 using ProgCourse.Utilities;
 
@@ -18,21 +20,25 @@ namespace ProgCourse.Data
             set { _currentUser = value; }
         }
 
-        public IBaseStorage<IUserEntity> UserStorage {  get; set; }
+        public IBaseRepository<IUserEntity> UserRepository {  get; set; }
+        public IBaseRepository<ICinemaHallEntity> CinemaHallRepository { get; set; }
 
-        public DataManager(UserStorage userStorage)
+        public DataManager(UserRepository userStorage, CinemaHallRepository cinemaHallRepository)
         {
-            UserStorage = userStorage;
+            UserRepository = userStorage;
+            CinemaHallRepository = cinemaHallRepository;
         }
 
         public void LoadAll()
         {
-            UserStorage.Load();
+            UserRepository.Load();
+            CinemaHallRepository.Load();
         }
 
         public void SaveAll()
         {
-            UserStorage.Save();
+            UserRepository.Save();
+            CinemaHallRepository.Save();
         }
 
         public bool TrySignUpUser(string login, string password, out string errorText)
@@ -47,7 +53,7 @@ namespace ProgCourse.Data
 
             password = HashConverter.ToHashString(password);
 
-            var user = (from x in UserStorage.GetAll()
+            var user = (from x in UserRepository.GetAll()
                         where x.Login == login && x.Password == password
                         select x).FirstOrDefault();
 
@@ -59,7 +65,7 @@ namespace ProgCourse.Data
 
             IUserEntity userForRegister = new UserEntity(login, password);
 
-            return UserStorage.Add(userForRegister);
+            return UserRepository.Add(userForRegister);
         }
 
         public bool TryLogInUser(string login, string password, out string errorText)
@@ -74,7 +80,7 @@ namespace ProgCourse.Data
 
             password = HashConverter.ToHashString(password);
 
-            var user = (from x in UserStorage.GetAll()
+            var user = (from x in UserRepository.GetAll()
                        where x.Login == login && x.Password == password
                        select x).FirstOrDefault();
 
