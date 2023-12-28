@@ -37,5 +37,10 @@ namespace ProgCourse.Services
 
             return false;
         }
+
+        public bool SaveRepository()
+        {
+            return _cinemaHallRepository.Save();
+        }
     }
 }

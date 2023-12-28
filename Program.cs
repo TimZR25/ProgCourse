@@ -20,17 +20,18 @@ namespace ProgCourse
 
             ViewsProvider viewsProvider = new ViewsProvider();
             UserRepository userStorage = new JsonUserRepository("users.json");
-            CinemaHallRepository cinemaHallRepositories = new JSONCinemaHallRepository("cinemaHalls.json");
+            CinemaHallRepository cinemaHallRepository = new JSONCinemaHallRepository("cinemaHalls.json");
 
-            DataManager dataManager = new DataManager(userStorage, cinemaHallRepositories);
+            DataManager dataManager = new DataManager(userStorage, cinemaHallRepository);
             ISignUpService signUpService = new SignUpService(dataManager.UserRepository);
             ILogInService logInService = new LogInService(dataManager.UserRepository);
+            ICinemaHallService cinemaService = new CinemaHallService(dataManager.CinemaHallRepository);
 
             dataManager.LoadAll();
 
             ISignUpPresenter signUpPresenter = new SignUpPresenter(signUpService);
             ILogInPresenter logInPresenter = new LogInPresenter(logInService);
-            ICinemaHallPresenter cinemaHallPresenter = new CinemaHallPresenter(dataManager);
+            ICinemaHallPresenter cinemaHallPresenter = new CinemaHallPresenter(cinemaService);
 
             ILogInView logInView = new LogInForm(viewsProvider, logInPresenter);
             ISignUpView signUpView = new SignUpForm(viewsProvider, signUpPresenter);
@@ -44,10 +45,9 @@ namespace ProgCourse
             viewsProvider.Register(ViewType.SignUp, signUpView);
             viewsProvider.Register(ViewType.CinemaHall, cinemaHallView);
 
-            
-            cinemaHallPresenter.InitCinemaHall(2);
+            cinemaHallPresenter.InitCinemaHall(1);
 
-            viewsProvider.SetCurrentView(ViewType.CinemaHall);
+            viewsProvider.SetCurrentView(ViewType.LogIn);
             Application.Run(viewsProvider.CurrentView as Form);
         }
     }

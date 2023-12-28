@@ -12,22 +12,28 @@ namespace ProgCourse.Services
 {
     public class CinemaHallHostService
     {
-        private IBaseRepository<ICinemaHallEntity> repository;
+        private IBaseRepository<ICinemaHallEntity> _repository;
 
         public CinemaHallHostService(IBaseRepository<ICinemaHallEntity> cinemaHallRepository)
         {
-            repository = cinemaHallRepository;
+            _repository = cinemaHallRepository;
         }
 
-        public bool TryAddCinemaHall(int hallNumber, int sizeSide)
+        public bool TryAddCinemaHall(int hallNumber, int sizeSide, decimal costSeat)
         {
-            if (repository.Add(new CinemaHall(hallNumber, sizeSide)))
+            if (_repository.Add(new CinemaHall(hallNumber, sizeSide, costSeat)))
             {
-                repository.Save();
+                _repository.Save();
                 return true;
             }
 
             return false;
+        }
+
+        public bool ClearRepository()
+        {
+            _repository.RemoveAll();
+            return _repository.Save();
         }
     }
 }

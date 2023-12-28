@@ -19,24 +19,26 @@ namespace ProgCourse.Presenters
 
         private ICinemaHallView? _view;
 
-        private IDataManager _dataManager;
+        private ICinemaHallService _cinemaHallService;
 
-        public CinemaHallPresenter(IDataManager dataManager)
+        public CinemaHallPresenter(ICinemaHallService cinemaHallService)
         {
-            _dataManager = dataManager;
+            _cinemaHallService = cinemaHallService;
         }
 
         public void Init(ICinemaHallView view)
         {
             _view = view;
+
+            _view.OnViewClosed += ViewClose;
         }
 
         public bool InitCinemaHall(int cinemaHallNumber)
         {
-            CinemaHallService cinemaService = new CinemaHallService(_dataManager.CinemaHallRepository);
+            
             ICinemaHall cinemaHall = new CinemaHall();
 
-            if (cinemaService.TryInitCinemaHall(cinemaHallNumber, out cinemaHall))
+            if (_cinemaHallService.TryInitCinemaHall(cinemaHallNumber, out cinemaHall))
             {
                 CinemaHall = cinemaHall;
 
@@ -54,13 +56,25 @@ namespace ProgCourse.Presenters
             CinemaHall?.SeatClick(id);
         }
 
-        public void SeatStateChanged(int id)
+        public void SeatStateChanged(ISeat seat)
         {
             if (CinemaHall is null) return;
 
-            SeatState seatState = CinemaHall.Seats[id].SeatState;
+            _view?.ChangeSeatColor(seat.ID, seat.SeatState);
+            _view?.ChangeTicketText(CinemaHall.BookedSeats.Count, CinemaHall.TicketsCost);
+        }
 
-            _view?.ChangeSeatColor(id, seatState);
+        public bool BuyTickets()
+        {
+            if (CinemaHall?.BookedSeats is null) return false;
+
+            return CinemaHall.BuyTickets();
+        }
+
+        public void ViewClose()
+        {
+            CinemaHall?.ViewClose();
+            _cinemaHallService.SaveRepository();
         }
     }
 }

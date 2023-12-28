@@ -16,16 +16,50 @@ namespace ProgCourse.Models
 
         public Dictionary<int, ISeat> Seats { get; set; } = new Dictionary<int, ISeat>();
 
-        public event Action<int>? OnSeatChanged;
+        public List<ISeat> BookedSeats
+        {
+            get
+            {
+                List<ISeat> seats = new List<ISeat>();
+
+                foreach (var seat in Seats)
+                {
+                    if (seat.Value.SeatState == SeatState.Booked) seats.Add(seat.Value);
+                }
+
+                return seats;
+            }
+        }
+        public decimal TicketsCost
+        {
+            get
+            {
+                decimal cost = 0;
+
+                foreach (ISeat seat in BookedSeats)
+                {
+                    cost += seat.Cost;
+                }
+
+                return cost;
+            }
+        }
+
+        public event Action<ISeat>? OnSeatChanged;
 
         public CinemaHall(ICinemaHallEntity cinema)
         {
             Number = cinema.Number;
             SideSize = cinema.SideSize;
             Seats = cinema.Seats;
+
+            foreach (var seats in Seats)
+            {
+                seats.Value.OnStateChanged += SeatChanged;
+            }
         }
 
-        public CinemaHall(int hallNumber, int sideSize)
+        public CinemaHall(int hallNumber, int sideSize, decimal costSeat)
         {
             Number = hallNumber;
             SideSize = sideSize;
@@ -35,7 +69,7 @@ namespace ProgCourse.Models
                 for (int j = 0; j < sideSize; j++)
                 {
                     int numberSeat = i * sideSize + j + 1;
-                    ISeat seat = new Seat(numberSeat, SeatState.Freely);
+                    ISeat seat = new Seat(numberSeat, SeatState.Freely, costSeat);
 
                     Seats.Add(numberSeat, seat);
                 }
@@ -46,8 +80,39 @@ namespace ProgCourse.Models
 
         public void SeatClick(int id)
         {
+            if (Seats[id].SeatState == SeatState.Sold) return;
+
             Seats[id].Click();
-            OnSeatChanged?.Invoke(id);
+        }
+
+        public void SeatChanged(object? sender, ISeat seat)
+        {
+            OnSeatChanged?.Invoke(seat);
+        }
+
+        public bool BuyTickets()
+        {
+            if (BookedSeats.Count <= 0) return false;
+
+            foreach (ISeat seat in BookedSeats)
+            {
+                seat.SeatState = SeatState.Sold;
+            }
+
+            return true;
+        }
+
+        public bool ViewClose()
+        {
+            if (BookedSeats.Count <= 0) return false;
+
+            foreach (ISeat seat in BookedSeats)
+            {
+                seat.SeatState = SeatState.Freely;
+            }
+
+            BookedSeats.Clear();
+            return true;
         }
     }
 }

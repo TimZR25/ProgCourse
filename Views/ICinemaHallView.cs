@@ -14,5 +14,6 @@ namespace ProgCourse.Views
 
         void Init(int sideSize);
         void ChangeSeatColor(int id, SeatState seatState);
+        void ChangeTicketText(int ticketAmount, decimal ticketCost);
     }
 }

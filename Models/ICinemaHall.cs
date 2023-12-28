@@ -4,8 +4,11 @@ namespace ProgCourse.Models
 {
     public interface ICinemaHall : ICinemaHallEntity
     {
-        event Action<int>? OnSeatChanged;
-
+        decimal TicketsCost { get; }
+        event Action<ISeat>? OnSeatChanged;
+        List<ISeat> BookedSeats { get; }
         void SeatClick(int id);
+        bool BuyTickets();
+        bool ViewClose();
     }
 }
