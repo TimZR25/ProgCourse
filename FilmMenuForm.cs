@@ -16,6 +16,8 @@ namespace ProgCourse
 
         public IViewsProvider ViewsProvider { get; }
 
+        public ListView ListViewSessions => listViewSessions;
+
         private IFilmMenuPresenter _presenter;
 
         public FilmMenuForm(IViewsProvider viewsProvider, IFilmMenuPresenter presenter)
@@ -40,7 +42,7 @@ namespace ProgCourse
             listViewSessions.Items.Clear();
             _presenter.CinemaHallService.TrySetIndexHall(0);
 
-            List<IFilmSessionEntity> filmSessions = new List<IFilmSessionEntity>(_presenter.FilmSessionRepository.GetAll());
+            List<IFilmSessionEntity> filmSessions = new List<IFilmSessionEntity>(_presenter.FilmMenuService.FilmSessionEntities);
 
             for (int i = 0; i < filmSessions.Count; i++)
             {
@@ -57,7 +59,6 @@ namespace ProgCourse
                 listViewSessions.Items[i].SubItems.Add($"{startTime} : {endTime}");
                 listViewSessions.Items[i].SubItems.Add(filmSessions[i].DateStart.Date.ToShortDateString());
             }
-
         }
 
         private void listViewSessions_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,6 +80,14 @@ namespace ProgCourse
             base.OnClosed(e);
 
             Application.Exit();
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            int index = listViewSessions.SelectedItems[0].Index;
+
+            _presenter.RemoveFilmSession(index);
+                
         }
     }
 }

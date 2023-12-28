@@ -16,17 +16,27 @@ namespace ProgCourse.Presenters
 
         public ICinemaHallService CinemaHallService { get; }
 
-        public IBaseRepository<IFilmSessionEntity> FilmSessionRepository { get; }
+        public IFilmMenuService FilmMenuService { get; }
 
-        public FilmMenuPresenter(ICinemaHallService cinemaHallService, IBaseRepository<IFilmSessionEntity> filmSessionRepository)
+        public FilmMenuPresenter(ICinemaHallService cinemaHallService, IFilmMenuService filmMenuService)
         {
             CinemaHallService = cinemaHallService;
-            FilmSessionRepository = filmSessionRepository;
+            FilmMenuService = filmMenuService;
         }
 
         public void Init(IFilmMenuView view)
         {
             _view = view;
+        }
+
+        public bool RemoveFilmSession(int index)
+        {
+            if (FilmMenuService.TryRemoveFilmSession(index) == false) return false;
+
+            _view?.ListViewSessions.SelectedItems.Clear();
+            _view?.ListViewSessions.Items[index].Remove();
+
+            return true;
         }
     }
 }

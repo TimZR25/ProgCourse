@@ -13,8 +13,9 @@ namespace ProgCourse.Presenters
     public interface IFilmMenuPresenter
     {
         ICinemaHallService CinemaHallService { get; }
-        IBaseRepository<IFilmSessionEntity> FilmSessionRepository { get; }
+        IFilmMenuService FilmMenuService { get; }
 
         void Init(IFilmMenuView view);
+        bool RemoveFilmSession(int index);
     }
 }

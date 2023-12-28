@@ -9,6 +9,6 @@ namespace ProgCourse.Views
 {
     public interface IFilmMenuView : IView
     {
-
+        ListView ListViewSessions { get; }
     }
 }

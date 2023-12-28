@@ -29,13 +29,14 @@ namespace ProgCourse
             ISignUpService signUpService = new SignUpService(dataManager.UserRepository);
             ILogInService logInService = new LogInService(dataManager.UserRepository);
             ICinemaHallService cinemaService = new CinemaHallService(dataManager.CinemaHallRepository);
+            IFilmMenuService filmMenuService = new FilmMenuService(dataManager.FilmSessionRepository);
 
             dataManager.LoadAll();
 
             ISignUpPresenter signUpPresenter = new SignUpPresenter(signUpService);
             ILogInPresenter logInPresenter = new LogInPresenter(logInService);
             ICinemaHallPresenter cinemaHallPresenter = new CinemaHallPresenter(cinemaService);
-            IFilmMenuPresenter filmMenuPresenter = new FilmMenuPresenter(cinemaService, dataManager.FilmSessionRepository);
+            IFilmMenuPresenter filmMenuPresenter = new FilmMenuPresenter(cinemaService, filmMenuService);
 
             ILogInView logInView = new LogInForm(viewsProvider, logInPresenter);
             ISignUpView signUpView = new SignUpForm(viewsProvider, signUpPresenter);
@@ -45,6 +46,7 @@ namespace ProgCourse
             logInPresenter.Init(logInView);
             signUpPresenter.Init(signUpView);
             cinemaHallPresenter.Init(cinemaHallView);
+            filmMenuPresenter.Init(filmMenuForm);
 
             viewsProvider.Register(ViewType.LogIn, logInView);
             viewsProvider.Register(ViewType.SignUp, signUpView);

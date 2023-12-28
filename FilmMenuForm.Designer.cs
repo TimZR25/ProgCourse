@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "0", "FilmName", "Time-Time", "xx.xx.xxxx" }, -1);
+            ListViewItem listViewItem2 = new ListViewItem(new string[] { "0", "FilmName", "Time-Time", "xx.xx.xxxx" }, -1);
             buttonNavigate = new Button();
             listViewSessions = new ListView();
             columnHeaderHallID = new ColumnHeader();
             columnHeaderFilm = new ColumnHeader();
             columnHeaderDuration = new ColumnHeader();
             columnHeaderDate = new ColumnHeader();
+            buttonRemove = new Button();
+            buttonAdd = new Button();
             SuspendLayout();
             // 
             // buttonNavigate
@@ -51,7 +53,7 @@
             // 
             listViewSessions.Columns.AddRange(new ColumnHeader[] { columnHeaderHallID, columnHeaderFilm, columnHeaderDuration, columnHeaderDate });
             listViewSessions.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            listViewSessions.Items.AddRange(new ListViewItem[] { listViewItem1 });
+            listViewSessions.Items.AddRange(new ListViewItem[] { listViewItem2 });
             listViewSessions.Location = new Point(12, 12);
             listViewSessions.MultiSelect = false;
             listViewSessions.Name = "listViewSessions";
@@ -81,11 +83,32 @@
             columnHeaderDate.Text = "Date";
             columnHeaderDate.Width = 180;
             // 
+            // buttonRemove
+            // 
+            buttonRemove.Location = new Point(612, 68);
+            buttonRemove.Name = "buttonRemove";
+            buttonRemove.Size = new Size(144, 50);
+            buttonRemove.TabIndex = 2;
+            buttonRemove.Text = "Удалить";
+            buttonRemove.UseVisualStyleBackColor = true;
+            buttonRemove.Click += buttonRemove_Click;
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.Location = new Point(612, 12);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(144, 50);
+            buttonAdd.TabIndex = 3;
+            buttonAdd.Text = "Добавить";
+            buttonAdd.UseVisualStyleBackColor = true;
+            // 
             // FilmMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(763, 371);
+            Controls.Add(buttonAdd);
+            Controls.Add(buttonRemove);
             Controls.Add(listViewSessions);
             Controls.Add(buttonNavigate);
             MaximizeBox = false;
@@ -103,5 +126,7 @@
         private ColumnHeader columnHeaderFilm;
         private ColumnHeader columnHeaderDuration;
         private ColumnHeader columnHeaderDate;
+        private Button buttonRemove;
+        private Button buttonAdd;
     }
 }
