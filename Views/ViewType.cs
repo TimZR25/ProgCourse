@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgCourse.Forms
+namespace ProgCourse.Views
 {
-    public interface ISignUpView : IView
+    public enum ViewType
     {
-        string Login { get; }
-        string Password { get; }
+        LogIn, SignUp, CinemaHall
     }
 }

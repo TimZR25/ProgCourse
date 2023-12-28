@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProgCourse.Views;
 
 namespace ProgCourse.Forms
 {
     public interface IViewsProvider
     {
-        public IView? CurrentView { get; }
+        IView? CurrentView { get; }
 
-        public void Register(ViewType viewType, IView view);
+        void Register(ViewType viewType, IView view);
 
-        public void Show(ViewType viewType);
-    }
-
-    public enum ViewType
-    {
-        LogIn, SignUp, CinemaHall
+        void Show(ViewType viewType);
     }
 }

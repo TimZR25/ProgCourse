@@ -14,5 +14,6 @@ namespace ProgCourse.Presenters
         void SeatClick(int id);
         void Init(ICinemaHallView view);
         bool InitCinemaHall(int cinemaNumber);
+        bool BuyTickets();
     }
 }

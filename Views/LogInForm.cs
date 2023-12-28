@@ -3,6 +3,7 @@ using ProgCourse.Data;
 using ProgCourse.Forms;
 using ProgCourse.Models;
 using ProgCourse.Presenters;
+using ProgCourse.Views;
 using System.Windows.Forms.VisualStyles;
 
 namespace ProgCourse
@@ -35,7 +36,7 @@ namespace ProgCourse
         {
             labelError.Hide();
 
-            if (_presenter.TryLogIn() == true) Close();
+            if (_presenter.TryLogIn() == true) ViewsProvider.Show(ViewType.CinemaHall);
         }
 
         private void labelSignUp_Click(object sender, EventArgs e)
@@ -52,11 +53,6 @@ namespace ProgCourse
         {
             labelError.Text = message;
             labelError.Show();
-        }
-
-        void IView.ShowDialog()
-        {
-            ShowDialog();
         }
     }
 }

@@ -53,10 +53,5 @@ namespace ProgCourse
             textBoxLogin.Text = string.Empty;
             textBoxPassword.Text = string.Empty;
         }
-
-        void IView.ShowDialog()
-        {
-            ShowDialog();
-        }
     }
 }

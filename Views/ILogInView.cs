@@ -9,7 +9,7 @@ namespace ProgCourse.Forms
 {
     public interface ILogInView : IView
     {
-        public string Login { get; }
-        public string Password { get; }
+        string Login { get; }
+        string Password { get; }
     }
 }

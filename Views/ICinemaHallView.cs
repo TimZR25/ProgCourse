@@ -10,9 +10,10 @@ namespace ProgCourse.Views
 {
     public interface ICinemaHallView : IView
     {
-        public Dictionary<int, Button> SeatViews { get; set; }
+        Dictionary<int, Button> SeatViews { get; set; }
 
-        public void Init(int sideSize);
-        public void ChangeSeatColor(int id, SeatState seatState);
+        void Init(int sideSize);
+        void ChangeSeatColor(int id, SeatState seatState);
+        void ChangeTicketText(int ticketAmount, decimal ticketCost);
     }
 }

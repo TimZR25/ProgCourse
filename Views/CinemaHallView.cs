@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace ProgCourse.Views
 {
@@ -24,9 +25,14 @@ namespace ProgCourse.Views
 
         private ICinemaHallPresenter _presenter;
 
+        private int buttonSize = 40;
+        private int offsetButton = 45;
+
         public CinemaHallView(IViewsProvider viewProvider, ICinemaHallPresenter presenter)
         {
             InitializeComponent();
+
+            FormClosed += (_, _) => OnViewClosed?.Invoke();
 
             _viewsProvider = viewProvider;
             _presenter = presenter;
@@ -34,36 +40,57 @@ namespace ProgCourse.Views
 
         public void Init(int sideSize)
         {
-            int buttonSize = 40;
-            int offsetButton = 50;
-
-            for (int i = 0; i < sideSize; i++)
+            Label labelCinema = new Label()
             {
-                for (int j = 0; j < sideSize; j++)
+                Text = "ЭКРАН",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Location = new Point(buttonSize / 2, 0),
+                Size = new Size(offsetButton * sideSize, 30),
+                BackColor = Color.DodgerBlue,
+                ForeColor = Color.Black
+            };
+
+            for (int y = 0; y < sideSize; y++)
+            {
+                Label labelRow = new Label()
                 {
-                    int numberSeat = i * sideSize + j + 1;
+                    Location = new Point(0, labelCinema.Height + offsetButton * y + offsetButton / 2),
+                    AutoSize = false,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Size = new Size(buttonSize / 2, buttonSize / 2),
+                    Text = $"{y + 1}",
+                    BackColor = Color.White,
+                    ForeColor = Color.Black
+                };
+
+                Controls.Add(labelRow);
+
+                for (int x = 0; x < sideSize; x++)
+                {
+                    int numberSeat = y * sideSize + x + 1;
+
                     Button seatView = new Button
                     {
-                        Location = new Point(offsetButton * j + 25, offsetButton * i),
+                        Location = new Point(labelRow.Location.X + offsetButton * x + offsetButton / 2, 2 * labelRow.Size.Height + offsetButton * y),
                         Size = new Size(buttonSize, buttonSize),
-                        Text = $"{numberSeat}",
-                        BackColor = Color.Green,
+                        Text = $"{x + 1}",
                         ForeColor = Color.White
                     };
 
                     seatView.Click += (_, _) => { _presenter.SeatClick(numberSeat); };
 
                     SeatViews.Add(numberSeat, seatView);
+
+                    if (_presenter.CinemaHall != null) ChangeSeatColor(numberSeat, _presenter.CinemaHall.Seats[numberSeat].SeatState);
+
                     Controls.Add(seatView);
                 }
             }
 
-            Size = new Size(Size.Width + offsetButton + buttonBuy.Width, Size.Height);
-        }
 
-        void IView.ShowDialog()
-        {
-            ShowDialog();
+            Controls.Add(labelCinema);
+
+            Size = new Size(Size.Width + offsetButton + buttonBuy.Width, Size.Height);
         }
 
         public void ChangeSeatColor(int id, SeatState seatState)
@@ -86,6 +113,17 @@ namespace ProgCourse.Views
             }
 
             SeatViews[id].BackColor = color;
+        }
+
+        public void ChangeTicketText(int ticketAmount, decimal ticketCost)
+        {
+            labelAmount.Text = ticketAmount.ToString();
+            labelCost.Text = ticketCost.ToString();
+        }
+
+        private void buttonBuy_Click(object sender, EventArgs e)
+        {
+            _presenter.BuyTickets();
         }
     }
 }

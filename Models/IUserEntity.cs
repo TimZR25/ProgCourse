@@ -9,7 +9,7 @@ namespace ProgCourse.Models
 {
     public interface IUserEntity : IEntity
     {
-        public string Login { get; }
-        public string Password { get; }
+        string Login { get; }
+        string Password { get; }
     }
 }

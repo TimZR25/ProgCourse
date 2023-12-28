@@ -2,14 +2,14 @@
 {
     public interface IView
     {
-        public IViewsProvider ViewsProvider { get; }
+        IViewsProvider ViewsProvider { get; }
 
-        public event Action? OnViewClosed;
+        event Action? OnViewClosed;
 
-        public void Dispose();
-        public void ShowDialog();
-        public void Show();
-        public void Hide();
-        public void Close();
+        void Dispose();
+        DialogResult ShowDialog();
+        void Show();
+        void Hide();
+        void Close();
     }
 }
