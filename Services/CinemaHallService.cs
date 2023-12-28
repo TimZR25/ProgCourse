@@ -13,6 +13,9 @@ namespace ProgCourse.Services
     {
         private IBaseRepository<ICinemaHallEntity> _cinemaHallRepository;
 
+        private int _currentIndex;
+        public int CurrentIndex => _currentIndex;
+
         public CinemaHallService(IBaseRepository<ICinemaHallEntity> cinemaHallRepository)
         {
             _cinemaHallRepository = cinemaHallRepository;
@@ -41,6 +44,20 @@ namespace ProgCourse.Services
         public bool SaveRepository()
         {
             return _cinemaHallRepository.Save();
+        }
+
+        public bool TrySetIndexHall(int index)
+        {
+            foreach (ICinemaHallEntity cinemaHall in _cinemaHallRepository.GetAll())
+            {
+                if (cinemaHall.Number == index)
+                {
+                    _currentIndex = index;
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

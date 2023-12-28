@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Services
 {
-    public class CinemaHallHostService
+    public class CinemaHallHostService : ICinemaHallHostService
     {
         private IBaseRepository<ICinemaHallEntity> _repository;
 
@@ -21,6 +21,10 @@ namespace ProgCourse.Services
 
         public bool TryAddCinemaHall(int hallNumber, int sizeSide, decimal costSeat)
         {
+            if (hallNumber <= 0) return false;
+            if (sizeSide <= 0) return false;
+            if (costSeat <= 0) return false;
+
             if (_repository.Add(new CinemaHall(hallNumber, sizeSide, costSeat)))
             {
                 _repository.Save();

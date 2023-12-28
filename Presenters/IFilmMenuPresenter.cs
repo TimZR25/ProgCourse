@@ -1,4 +1,5 @@
-﻿using ProgCourse.Models;
+﻿using ProgCourse.Data;
+using ProgCourse.Data.FilmSession;
 using ProgCourse.Services;
 using ProgCourse.Views;
 using System;
@@ -9,13 +10,11 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Presenters
 {
-    public interface ICinemaHallPresenter
+    public interface IFilmMenuPresenter
     {
         ICinemaHallService CinemaHallService { get; }
-        ICinemaHall? CinemaHall { get; set; }
-        void SeatClick(int id);
-        void Init(ICinemaHallView view);
-        bool InitCinemaHall(int cinemaNumber);
-        bool BuyTickets();
+        IBaseRepository<IFilmSessionEntity> FilmSessionRepository { get; }
+
+        void Init(IFilmMenuView view);
     }
 }

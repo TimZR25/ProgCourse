@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProgCourse.Data.CinemaHall;
+using ProgCourse.Data.FilmSession;
 using ProgCourse.Models;
 
 namespace ProgCourse.Data
@@ -13,6 +14,7 @@ namespace ProgCourse.Data
         IBaseRepository<IUserEntity> UserRepository { get; set; }
 
         IBaseRepository<ICinemaHallEntity> CinemaHallRepository { get; set; }
+        IBaseRepository<IFilmSessionEntity> FilmSessionRepository { get; set; }
 
         void LoadAll();
         void SaveAll();

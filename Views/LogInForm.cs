@@ -36,7 +36,7 @@ namespace ProgCourse
         {
             labelError.Hide();
 
-            if (_presenter.TryLogIn() == true) ViewsProvider.Show(ViewType.CinemaHall);
+            if (_presenter.TryLogIn() == true) ViewsProvider.Show(ViewType.FilmMenu);
         }
 
         private void labelSignUp_Click(object sender, EventArgs e)

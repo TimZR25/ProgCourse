@@ -19,11 +19,11 @@ namespace ProgCourse.Presenters
 
         private ICinemaHallView? _view;
 
-        private ICinemaHallService _cinemaHallService;
+        public ICinemaHallService CinemaHallService { get; }
 
         public CinemaHallPresenter(ICinemaHallService cinemaHallService)
         {
-            _cinemaHallService = cinemaHallService;
+            CinemaHallService = cinemaHallService;
         }
 
         public void Init(ICinemaHallView view)
@@ -35,10 +35,9 @@ namespace ProgCourse.Presenters
 
         public bool InitCinemaHall(int cinemaHallNumber)
         {
-            
             ICinemaHall cinemaHall = new CinemaHall();
 
-            if (_cinemaHallService.TryInitCinemaHall(cinemaHallNumber, out cinemaHall))
+            if (CinemaHallService.TryInitCinemaHall(cinemaHallNumber, out cinemaHall))
             {
                 CinemaHall = cinemaHall;
 
@@ -74,7 +73,7 @@ namespace ProgCourse.Presenters
         public void ViewClose()
         {
             CinemaHall?.ViewClose();
-            _cinemaHallService.SaveRepository();
+            CinemaHallService.SaveRepository();
         }
     }
 }
