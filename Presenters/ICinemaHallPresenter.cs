@@ -1,4 +1,5 @@
 ﻿using ProgCourse.Models;
+using ProgCourse.Services;
 using ProgCourse.Views;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace ProgCourse.Presenters
 {
     public interface ICinemaHallPresenter
     {
+        ICinemaHallService CinemaHallService { get; }
         ICinemaHall? CinemaHall { get; set; }
         void SeatClick(int id);
         void Init(ICinemaHallView view);

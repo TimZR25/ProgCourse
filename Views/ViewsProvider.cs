@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgCourse.Forms
+namespace ProgCourse.Views
 {
     public class ViewsProvider : IViewsProvider
     {

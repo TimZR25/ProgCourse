@@ -1,12 +1,11 @@
 using Newtonsoft.Json;
 using ProgCourse.Data;
-using ProgCourse.Forms;
+using ProgCourse.Views;
 using ProgCourse.Models;
 using ProgCourse.Presenters;
-using ProgCourse.Views;
 using System.Windows.Forms.VisualStyles;
 
-namespace ProgCourse
+namespace ProgCourse.Views
 {
     public partial class LogInForm : Form, ILogInView
     {
@@ -36,7 +35,7 @@ namespace ProgCourse
         {
             labelError.Hide();
 
-            if (_presenter.TryLogIn() == true) ViewsProvider.Show(ViewType.CinemaHall);
+            if (_presenter.TryLogIn() == true) ViewsProvider.Show(ViewType.FilmMenu);
         }
 
         private void labelSignUp_Click(object sender, EventArgs e)

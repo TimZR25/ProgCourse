@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgCourse.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProgCourse.Views
 {
-    public interface ISignUpView : IView
+    public interface IFilmMenuView : IView
     {
-        string Login { get; }
-        string Password { get; }
+        ListView ListViewSessions { get; }
     }
 }

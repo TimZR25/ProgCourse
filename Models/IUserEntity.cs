@@ -11,5 +11,6 @@ namespace ProgCourse.Models
     {
         string Login { get; }
         string Password { get; }
+        LevelUserAccess LevelUserAccess { get; }
     }
 }

@@ -12,10 +12,13 @@ namespace ProgCourse.Models
         public string Login { get; }
         public string Password { get; }
 
-        public UserEntity(string login, string password)
+        public LevelUserAccess LevelUserAccess { get; }
+
+        public UserEntity(string login, string password, LevelUserAccess levelUserAccess)
         {
             Login = login;
             Password = password;
+            LevelUserAccess = levelUserAccess;
         }
     }
 }

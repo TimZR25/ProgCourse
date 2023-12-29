@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualBasic.Logging;
 using ProgCourse.Data;
-using ProgCourse.Forms;
+using ProgCourse.Views;
 using ProgCourse.Services;
 using ProgCourse.Utilities;
 using System;
