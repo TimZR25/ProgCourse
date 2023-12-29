@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProgCourse.Data
+﻿namespace ProgCourse.Data
 {
     public interface IBaseRepository<T> where T : IEntity
     {

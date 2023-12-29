@@ -1,14 +1,4 @@
-﻿using ProgCourse.Views;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProgCourse.Views
+﻿namespace ProgCourse.Views
 {
     public class ViewsProvider : IViewsProvider
     {

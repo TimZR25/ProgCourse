@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProgCourse.Data.CinemaHall;
+﻿using ProgCourse.Data.CinemaHall;
 using ProgCourse.Data.FilmSession;
-using ProgCourse.Models;
+using ProgCourse.User;
 
 namespace ProgCourse.Data
 {

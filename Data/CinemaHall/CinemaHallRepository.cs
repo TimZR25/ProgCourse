@@ -1,12 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using ProgCourse.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProgCourse.Data.CinemaHall
+﻿namespace ProgCourse.Data.CinemaHall
 {
     public abstract class CinemaHallRepository : IBaseRepository<ICinemaHallEntity>
     {

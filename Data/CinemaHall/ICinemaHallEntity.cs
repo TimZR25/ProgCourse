@@ -1,4 +1,4 @@
-﻿using ProgCourse.Models;
+﻿using ProgCourse.CinemaHallFolder.SeatFolder;
 
 namespace ProgCourse.Data.CinemaHall
 {

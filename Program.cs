@@ -1,10 +1,20 @@
+using ProgCourse.CinemaHallFolder.CinemaHallHost;
+using ProgCourse.CinemaHallFolder.Presenter;
+using ProgCourse.CinemaHallFolder.Service;
+using ProgCourse.CinemaHallFolder.View;
 using ProgCourse.Data;
 using ProgCourse.Data.CinemaHall;
 using ProgCourse.Data.FilmSession;
 using ProgCourse.Data.User;
+using ProgCourse.FilmSession.FilmMenu;
+using ProgCourse.FilmSession.FilmSessionHost;
+using ProgCourse.LogIn.Presenter;
+using ProgCourse.LogIn.Service;
+using ProgCourse.LogIn.View;
+using ProgCourse.SignUp.Presenter;
+using ProgCourse.SignUp.Service;
+using ProgCourse.SignUp.View;
 using ProgCourse.Views;
-using ProgCourse.Presenters;
-using ProgCourse.Services;
 
 namespace ProgCourse
 {
@@ -57,7 +67,7 @@ namespace ProgCourse
             viewsProvider.Register(ViewType.FilmMenu, filmMenuView);
             viewsProvider.Register(ViewType.FilmSessionHost, filmSessionHostView);
 
-            viewsProvider.SetCurrentView(ViewType.LogIn); 
+            viewsProvider.SetCurrentView(ViewType.LogIn);
             Application.Run(viewsProvider.CurrentView as Form);
         }
     }
