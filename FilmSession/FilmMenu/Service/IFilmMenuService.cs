@@ -1,6 +1,6 @@
 ﻿using ProgCourse.Data.FilmSession;
 
-namespace ProgCourse.FilmSession.FilmMenu
+namespace ProgCourse.FilmSession.FilmMenu.Service
 {
     public interface IFilmMenuService
     {

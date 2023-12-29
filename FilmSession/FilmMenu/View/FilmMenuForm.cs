@@ -1,5 +1,6 @@
 ﻿using ProgCourse.Data.FilmSession;
-using ProgCourse.FilmSession.FilmMenu;
+using ProgCourse.FilmSession.FilmMenu.Presenter;
+using ProgCourse.FilmSession.FilmMenu.View;
 using ProgCourse.User;
 
 namespace ProgCourse.Views

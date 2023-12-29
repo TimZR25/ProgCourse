@@ -25,6 +25,7 @@ namespace ProgCourse.CinemaHallFolder.Model
                 return seats;
             }
         }
+
         public decimal TicketsCost
         {
             get

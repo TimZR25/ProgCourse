@@ -1,5 +1,6 @@
 ﻿using ProgCourse.Data.CinemaHall;
-using ProgCourse.FilmSession.FilmSessionHost;
+using ProgCourse.FilmSession.FilmSessionHost.Presenter;
+using ProgCourse.FilmSession.FilmSessionHost.View;
 
 namespace ProgCourse.Views
 {

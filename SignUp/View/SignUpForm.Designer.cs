@@ -140,7 +140,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "SignUpForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "SignUp";
+            Text = "Регистрация";
             ResumeLayout(false);
             PerformLayout();
         }

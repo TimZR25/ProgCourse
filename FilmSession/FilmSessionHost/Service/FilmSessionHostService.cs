@@ -2,7 +2,7 @@
 using ProgCourse.Data.CinemaHall;
 using ProgCourse.Data.FilmSession;
 
-namespace ProgCourse.FilmSession.FilmSessionHost
+namespace ProgCourse.FilmSession.FilmSessionHost.Service
 {
     public class FilmSessionHostService : IFilmSessionHostService
     {

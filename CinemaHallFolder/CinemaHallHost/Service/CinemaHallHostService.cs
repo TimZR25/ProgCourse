@@ -2,7 +2,7 @@
 using ProgCourse.Data;
 using ProgCourse.Data.CinemaHall;
 
-namespace ProgCourse.CinemaHallFolder.CinemaHallHost
+namespace ProgCourse.CinemaHallFolder.CinemaHallHost.Service
 {
     public class CinemaHallHostService : ICinemaHallHostService
     {

@@ -1,7 +1,9 @@
 ﻿using ProgCourse.CinemaHallFolder.Service;
+using ProgCourse.FilmSession.FilmMenu.Service;
+using ProgCourse.FilmSession.FilmMenu.View;
 using ProgCourse.LogIn.Service;
 
-namespace ProgCourse.FilmSession.FilmMenu
+namespace ProgCourse.FilmSession.FilmMenu.Presenter
 {
     public class FilmMenuPresenter : IFilmMenuPresenter
     {

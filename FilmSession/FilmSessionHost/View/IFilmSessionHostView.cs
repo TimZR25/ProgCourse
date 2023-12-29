@@ -1,6 +1,6 @@
 ﻿using ProgCourse.Views;
 
-namespace ProgCourse.FilmSession.FilmSessionHost
+namespace ProgCourse.FilmSession.FilmSessionHost.View
 {
     public interface IFilmSessionHostView : IView
     {

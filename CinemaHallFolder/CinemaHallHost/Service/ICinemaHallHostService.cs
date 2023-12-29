@@ -1,4 +1,4 @@
-﻿namespace ProgCourse.CinemaHallFolder.CinemaHallHost
+﻿namespace ProgCourse.CinemaHallFolder.CinemaHallHost.Service
 {
     public interface ICinemaHallHostService
     {

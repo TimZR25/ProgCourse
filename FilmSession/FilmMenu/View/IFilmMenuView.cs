@@ -1,6 +1,6 @@
 ﻿using ProgCourse.Views;
 
-namespace ProgCourse.FilmSession.FilmMenu
+namespace ProgCourse.FilmSession.FilmMenu.View
 {
     public interface IFilmMenuView : IView
     {

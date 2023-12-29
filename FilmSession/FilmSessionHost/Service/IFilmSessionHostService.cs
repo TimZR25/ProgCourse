@@ -1,6 +1,6 @@
 ﻿using ProgCourse.Data.CinemaHall;
 
-namespace ProgCourse.FilmSession.FilmSessionHost
+namespace ProgCourse.FilmSession.FilmSessionHost.Service
 {
     public interface IFilmSessionHostService
     {

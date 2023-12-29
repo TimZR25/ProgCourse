@@ -154,7 +154,7 @@
             MaximizeBox = false;
             Name = "LogInForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "LogIn";
+            Text = "Авторизация";
             ResumeLayout(false);
             PerformLayout();
         }
