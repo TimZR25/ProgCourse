@@ -71,6 +71,26 @@ namespace ProgCourse.Views
         {
             base.OnLoad(e);
 
+            if (_presenter.LogInService.CurrentUser is null) 
+            { 
+                Close(); 
+                return; 
+            }
+
+            switch (_presenter.LogInService.CurrentUser.LevelUserAccess)
+            {
+                case LevelUserAccess.Admin:
+                    buttonAdd.Show();
+                    buttonRemove.Show();
+                    break;
+                case LevelUserAccess.Cashier:
+                    buttonAdd.Hide();
+                    buttonRemove.Hide();
+                    break;
+                default:
+                    break;
+            }
+
             Init();
         }
 

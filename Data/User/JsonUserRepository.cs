@@ -35,7 +35,7 @@ namespace ProgCourse.Data.User
 
         public override bool Save()
         {
-            if (_users.Count <= 0) return false;
+            if (_users.Count < 0) return false;
 
             JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 

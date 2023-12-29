@@ -1,5 +1,6 @@
 ﻿using ProgCourse.Data;
 using ProgCourse.Data.FilmSession;
+using ProgCourse.Models;
 using ProgCourse.Services;
 using ProgCourse.Views;
 using System;
@@ -18,10 +19,13 @@ namespace ProgCourse.Presenters
 
         public IFilmMenuService FilmMenuService { get; }
 
-        public FilmMenuPresenter(ICinemaHallService cinemaHallService, IFilmMenuService filmMenuService)
+        public ILogInService LogInService { get; }
+
+        public FilmMenuPresenter(ICinemaHallService cinemaHallService, IFilmMenuService filmMenuService, ILogInService logInService)
         {
             CinemaHallService = cinemaHallService;
             FilmMenuService = filmMenuService;
+            LogInService = logInService;
         }
 
         public void Init(IFilmMenuView view)

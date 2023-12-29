@@ -104,6 +104,8 @@ namespace ProgCourse.Views
                 }
             }
 
+            Text = "Зал №" + _presenter?.CinemaHall?.Number.ToString();
+
             Size = new Size(labelCinema.Width + labelCinema.Height + (_buttonSize + _offsetButton) + buttonBuy.Width,
                 (_buttonSize + _offsetButton) * (sideSize + 1) + labelCinema.Height);
         }

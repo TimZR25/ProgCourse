@@ -19,11 +19,11 @@ namespace ProgCourse
             ApplicationConfiguration.Initialize();
 
             ViewsProvider viewsProvider = new ViewsProvider();
-            UserRepository userStorage = new JsonUserRepository("users.json");
+            UserRepository userRepository = new JsonUserRepository("users.json");
             CinemaHallRepository cinemaHallRepository = new JSONCinemaHallRepository("cinemaHalls.json");
             FilmSessionRepository filmSessionRepository = new JSONFilmRepository("filmSessions.json");
 
-            DataManager dataManager = new DataManager(userStorage, cinemaHallRepository, filmSessionRepository);
+            DataManager dataManager = new DataManager(userRepository, cinemaHallRepository, filmSessionRepository);
 
             ISignUpService signUpService = new SignUpService(dataManager.UserRepository);
             ILogInService logInService = new LogInService(dataManager.UserRepository);
@@ -36,7 +36,7 @@ namespace ProgCourse
             ISignUpPresenter signUpPresenter = new SignUpPresenter(signUpService);
             ILogInPresenter logInPresenter = new LogInPresenter(logInService);
             ICinemaHallPresenter cinemaHallPresenter = new CinemaHallPresenter(cinemaService);
-            IFilmMenuPresenter filmMenuPresenter = new FilmMenuPresenter(cinemaService, filmMenuService);
+            IFilmMenuPresenter filmMenuPresenter = new FilmMenuPresenter(cinemaService, filmMenuService, logInService);
             IFilmSessionHostPresenter filmSessionHostPresenter = new FilmSessionHostPresenter(filmSessionHostService);
 
             ILogInView logInView = new LogInForm(viewsProvider, logInPresenter);

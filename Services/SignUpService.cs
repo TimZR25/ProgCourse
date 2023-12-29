@@ -41,7 +41,7 @@ namespace ProgCourse.Services
                 return false;
             }
 
-            IUserEntity userForRegister = new UserEntity(login, password);
+            IUserEntity userForRegister = new UserEntity(login, password, LevelUserAccess.Cashier);
 
             if (_userRepository.Add(userForRegister))
             {
