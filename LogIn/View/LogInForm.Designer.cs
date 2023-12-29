@@ -120,9 +120,9 @@
             labelPassword.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelPassword.Location = new Point(125, 252);
             labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(57, 15);
+            labelPassword.Size = new Size(49, 15);
             labelPassword.TabIndex = 11;
-            labelPassword.Text = "Password";
+            labelPassword.Text = "Пароль";
             // 
             // labelLogin
             // 
@@ -130,9 +130,9 @@
             labelLogin.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelLogin.Location = new Point(125, 182);
             labelLogin.Name = "labelLogin";
-            labelLogin.Size = new Size(37, 15);
+            labelLogin.Size = new Size(41, 15);
             labelLogin.TabIndex = 10;
-            labelLogin.Text = "Login";
+            labelLogin.Text = "Логин";
             // 
             // LogInForm
             // 

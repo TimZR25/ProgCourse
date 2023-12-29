@@ -157,7 +157,7 @@
             MaximizeBox = false;
             Name = "FilmSessionHostForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FilmSessionHostForm";
+            Text = "Добавление кино-сессии";
             ResumeLayout(false);
             PerformLayout();
         }

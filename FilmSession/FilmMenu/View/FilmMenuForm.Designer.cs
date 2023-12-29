@@ -115,7 +115,7 @@
             MaximizeBox = false;
             Name = "FilmMenuForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FilmMenu";
+            Text = "Кинотека";
             ResumeLayout(false);
         }
 
