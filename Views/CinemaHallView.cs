@@ -1,4 +1,4 @@
-﻿using ProgCourse.Forms;
+﻿using ProgCourse.Views;
 using ProgCourse.Models;
 using ProgCourse.Presenters;
 using System;
@@ -141,7 +141,7 @@ namespace ProgCourse.Views
             _presenter.BuyTickets();
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnActivated(EventArgs e)
         {
             base.OnLoad(e);
 

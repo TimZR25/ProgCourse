@@ -8,6 +8,6 @@ namespace ProgCourse.Views
 {
     public enum ViewType
     {
-        LogIn, SignUp, CinemaHall, FilmMenu
+        LogIn, SignUp, CinemaHall, FilmMenu, FilmSessionHost
     }
 }

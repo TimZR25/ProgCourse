@@ -1,8 +1,8 @@
-using ProgCourse.Forms;
+using ProgCourse.Views;
 using ProgCourse.Models;
 using ProgCourse.Presenters;
 
-namespace ProgCourse
+namespace ProgCourse.Views
 {
     public partial class SignUpForm : Form, ISignUpView
     {

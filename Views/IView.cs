@@ -1,4 +1,4 @@
-﻿namespace ProgCourse.Forms
+﻿namespace ProgCourse.Views
 {
     public interface IView
     {

@@ -1,12 +1,11 @@
 using Newtonsoft.Json;
 using ProgCourse.Data;
-using ProgCourse.Forms;
+using ProgCourse.Views;
 using ProgCourse.Models;
 using ProgCourse.Presenters;
-using ProgCourse.Views;
 using System.Windows.Forms.VisualStyles;
 
-namespace ProgCourse
+namespace ProgCourse.Views
 {
     public partial class LogInForm : Form, ILogInView
     {

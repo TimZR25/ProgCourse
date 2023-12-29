@@ -2,10 +2,9 @@ using ProgCourse.Data;
 using ProgCourse.Data.CinemaHall;
 using ProgCourse.Data.FilmSession;
 using ProgCourse.Data.User;
-using ProgCourse.Forms;
+using ProgCourse.Views;
 using ProgCourse.Presenters;
 using ProgCourse.Services;
-using ProgCourse.Views;
 
 namespace ProgCourse
 {
@@ -30,6 +29,7 @@ namespace ProgCourse
             ILogInService logInService = new LogInService(dataManager.UserRepository);
             ICinemaHallService cinemaService = new CinemaHallService(dataManager.CinemaHallRepository);
             IFilmMenuService filmMenuService = new FilmMenuService(dataManager.FilmSessionRepository);
+            IFilmSessionHostService filmSessionHostService = new FilmSessionHostService(filmSessionRepository, cinemaHallRepository);
 
             dataManager.LoadAll();
 
@@ -37,26 +37,27 @@ namespace ProgCourse
             ILogInPresenter logInPresenter = new LogInPresenter(logInService);
             ICinemaHallPresenter cinemaHallPresenter = new CinemaHallPresenter(cinemaService);
             IFilmMenuPresenter filmMenuPresenter = new FilmMenuPresenter(cinemaService, filmMenuService);
+            IFilmSessionHostPresenter filmSessionHostPresenter = new FilmSessionHostPresenter(filmSessionHostService);
 
             ILogInView logInView = new LogInForm(viewsProvider, logInPresenter);
             ISignUpView signUpView = new SignUpForm(viewsProvider, signUpPresenter);
             ICinemaHallView cinemaHallView = new CinemaHallView(viewsProvider, cinemaHallPresenter);
-            IFilmMenuView filmMenuForm = new FilmMenuForm(viewsProvider, filmMenuPresenter);
+            IFilmMenuView filmMenuView = new FilmMenuForm(viewsProvider, filmMenuPresenter);
+            IFilmSessionHostView filmSessionHostView = new FilmSessionHostForm(viewsProvider, filmSessionHostPresenter);
 
             logInPresenter.Init(logInView);
             signUpPresenter.Init(signUpView);
             cinemaHallPresenter.Init(cinemaHallView);
-            filmMenuPresenter.Init(filmMenuForm);
+            filmMenuPresenter.Init(filmMenuView);
+            filmSessionHostPresenter.Init(filmSessionHostView);
 
             viewsProvider.Register(ViewType.LogIn, logInView);
             viewsProvider.Register(ViewType.SignUp, signUpView);
             viewsProvider.Register(ViewType.CinemaHall, cinemaHallView);
-            viewsProvider.Register(ViewType.FilmMenu, filmMenuForm);
+            viewsProvider.Register(ViewType.FilmMenu, filmMenuView);
+            viewsProvider.Register(ViewType.FilmSessionHost, filmSessionHostView);
 
-            //new CinemaHallHostService(cinemaHallRepository).TryAddCinemaHall(1, 5, 120);
-            //new FilmSessionHostService(filmSessionRepository).TryAddFilmSession(3, "Batman", DateTime.Now, new TimeOnly(1, 0));
-
-            viewsProvider.SetCurrentView(ViewType.LogIn);
+            viewsProvider.SetCurrentView(ViewType.LogIn); 
             Application.Run(viewsProvider.CurrentView as Form);
         }
     }

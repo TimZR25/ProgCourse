@@ -1,6 +1,4 @@
-﻿using ProgCourse.Views;
-
-namespace ProgCourse.Forms
+﻿namespace ProgCourse.Views
 {
     public interface IViewsProvider
     {

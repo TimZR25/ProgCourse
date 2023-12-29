@@ -1,4 +1,4 @@
-﻿namespace ProgCourse
+﻿namespace ProgCourse.Views
 {
     partial class FilmMenuForm
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "0", "FilmName", "Time-Time", "xx.xx.xxxx" }, -1);
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "0", "FilmName", "Time-Time", "xx.xx.xxxx" }, -1);
             buttonNavigate = new Button();
             listViewSessions = new ListView();
             columnHeaderHallID = new ColumnHeader();
@@ -53,7 +53,7 @@
             // 
             listViewSessions.Columns.AddRange(new ColumnHeader[] { columnHeaderHallID, columnHeaderFilm, columnHeaderDuration, columnHeaderDate });
             listViewSessions.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            listViewSessions.Items.AddRange(new ListViewItem[] { listViewItem2 });
+            listViewSessions.Items.AddRange(new ListViewItem[] { listViewItem1 });
             listViewSessions.Location = new Point(12, 12);
             listViewSessions.MultiSelect = false;
             listViewSessions.Name = "listViewSessions";
@@ -101,6 +101,7 @@
             buttonAdd.TabIndex = 3;
             buttonAdd.Text = "Добавить";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // FilmMenuForm
             // 

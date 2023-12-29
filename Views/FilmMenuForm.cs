@@ -1,12 +1,11 @@
 ﻿using ProgCourse.Data;
 using ProgCourse.Data.FilmSession;
-using ProgCourse.Forms;
+using ProgCourse.Views;
 using ProgCourse.Models;
 using ProgCourse.Presenters;
-using ProgCourse.Views;
 
 
-namespace ProgCourse
+namespace ProgCourse.Views
 {
     public partial class FilmMenuForm : Form, IFilmMenuView
     {
@@ -68,7 +67,7 @@ namespace ProgCourse
             _index = int.Parse(listViewSessions.SelectedItems[0].Text);
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnActivated(EventArgs e)
         {
             base.OnLoad(e);
 
@@ -87,7 +86,12 @@ namespace ProgCourse
             int index = listViewSessions.SelectedItems[0].Index;
 
             _presenter.RemoveFilmSession(index);
-                
+
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            ViewsProvider.Show(ViewType.FilmSessionHost);
         }
     }
 }

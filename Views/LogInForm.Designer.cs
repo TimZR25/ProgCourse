@@ -1,4 +1,4 @@
-﻿namespace ProgCourse
+﻿namespace ProgCourse.Views
 {
     partial class LogInForm
     {

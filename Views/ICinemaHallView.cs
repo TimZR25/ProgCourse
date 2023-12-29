@@ -1,4 +1,4 @@
-﻿using ProgCourse.Forms;
+﻿using ProgCourse.Views;
 using ProgCourse.Models;
 using System;
 using System.Collections.Generic;

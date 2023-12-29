@@ -48,6 +48,12 @@ namespace ProgCourse.Services
 
         public bool TrySetIndexHall(int index)
         {
+            if (index == 0)
+            {
+                _currentIndex = 0;
+                return false;
+            }
+
             foreach (ICinemaHallEntity cinemaHall in _cinemaHallRepository.GetAll())
             {
                 if (cinemaHall.Number == index)
