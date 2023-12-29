@@ -18,6 +18,6 @@ namespace ProgCourse.Presenters
         ILogInService LogInService { get; }
 
         void Init(IFilmMenuView view);
-        bool RemoveFilmSession(int index);
+        bool RemoveFilmSession(int hallID, int indexView);
     }
 }

@@ -33,12 +33,12 @@ namespace ProgCourse.Presenters
             _view = view;
         }
 
-        public bool RemoveFilmSession(int index)
+        public bool RemoveFilmSession(int hallID, int indexView)
         {
-            if (FilmMenuService.TryRemoveFilmSession(index) == false) return false;
+            if (FilmMenuService.TryRemoveFilmSession(hallID) == false) return false;
 
             _view?.ListViewSessions.SelectedItems.Clear();
-            _view?.ListViewSessions.Items[index].Remove();
+            _view?.ListViewSessions.Items[indexView].Remove();
 
             return true;
         }

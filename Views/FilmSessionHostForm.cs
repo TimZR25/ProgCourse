@@ -1,4 +1,5 @@
-﻿using ProgCourse.Presenters;
+﻿using ProgCourse.Data.CinemaHall;
+using ProgCourse.Presenters;
 using ProgCourse.Views;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,10 @@ namespace ProgCourse.Views
         public IViewsProvider ViewsProvider { get; }
 
         public TextBox FilmName => textBoxFilmName;
-        public NumericUpDown HallID => numericUpDownHallID;
+        public ComboBox HallID => comboBoxHallID;
         public DateTimePicker Duration => dateTimePickerDuration;
-        public DateTimePicker Date => dateTimePicker1;
+        public DateTimePicker Date => dateTimePickerDate;
+        public DateTimePicker StartTime => dateTimePickerStartTime;
 
 
         public event Action? OnViewClosed;
@@ -40,6 +42,19 @@ namespace ProgCourse.Views
         {
             if (_presenter.TryAddFilmSession())
                 Close();
+        }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+
+            comboBoxHallID.Items.Clear();
+
+            foreach (ICinemaHallEntity hallEntity in _presenter.FilmSessionHostService.ReservedHalls)
+            {
+                comboBoxHallID.Items.Add(hallEntity.Number);
+            }
+
         }
     }
 }

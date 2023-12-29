@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dateTimePicker1 = new DateTimePicker();
+            dateTimePickerDate = new DateTimePicker();
             textBoxFilmName = new TextBox();
             labelHallID = new Label();
             labelFilmName = new Label();
             labelData = new Label();
             labelDuration = new Label();
             buttonAdd = new Button();
-            numericUpDownHallID = new NumericUpDown();
             dateTimePickerDuration = new DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownHallID).BeginInit();
+            comboBoxHallID = new ComboBox();
+            dateTimePickerStartTime = new DateTimePicker();
+            labelStartTime = new Label();
             SuspendLayout();
             // 
-            // dateTimePicker1
+            // dateTimePickerDate
             // 
-            dateTimePicker1.Location = new Point(260, 109);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(131, 23);
-            dateTimePicker1.TabIndex = 0;
-            dateTimePicker1.Value = new DateTime(2023, 12, 29, 6, 0, 4, 0);
+            dateTimePickerDate.Location = new Point(260, 109);
+            dateTimePickerDate.Name = "dateTimePickerDate";
+            dateTimePickerDate.Size = new Size(131, 23);
+            dateTimePickerDate.TabIndex = 0;
+            dateTimePickerDate.Value = new DateTime(2023, 12, 29, 6, 0, 4, 0);
             // 
             // textBoxFilmName
             // 
@@ -85,7 +86,7 @@
             // labelDuration
             // 
             labelDuration.AutoSize = true;
-            labelDuration.Location = new Point(37, 87);
+            labelDuration.Location = new Point(37, 69);
             labelDuration.Name = "labelDuration";
             labelDuration.Size = new Size(131, 15);
             labelDuration.TabIndex = 7;
@@ -95,61 +96,84 @@
             // 
             buttonAdd.Location = new Point(260, 156);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(125, 30);
+            buttonAdd.Size = new Size(131, 30);
             buttonAdd.TabIndex = 8;
             buttonAdd.Text = "Добавить";
             buttonAdd.UseVisualStyleBackColor = true;
             buttonAdd.Click += buttonAdd_Click;
             // 
-            // numericUpDownHallID
-            // 
-            numericUpDownHallID.Location = new Point(260, 35);
-            numericUpDownHallID.Name = "numericUpDownHallID";
-            numericUpDownHallID.Size = new Size(131, 23);
-            numericUpDownHallID.TabIndex = 9;
-            // 
             // dateTimePickerDuration
             // 
             dateTimePickerDuration.Format = DateTimePickerFormat.Time;
-            dateTimePickerDuration.Location = new Point(37, 109);
+            dateTimePickerDuration.Location = new Point(37, 91);
             dateTimePickerDuration.Name = "dateTimePickerDuration";
             dateTimePickerDuration.Size = new Size(131, 23);
             dateTimePickerDuration.TabIndex = 10;
             dateTimePickerDuration.Value = new DateTime(2023, 12, 29, 0, 0, 0, 0);
+            // 
+            // comboBoxHallID
+            // 
+            comboBoxHallID.FormattingEnabled = true;
+            comboBoxHallID.Location = new Point(260, 34);
+            comboBoxHallID.Name = "comboBoxHallID";
+            comboBoxHallID.Size = new Size(131, 23);
+            comboBoxHallID.TabIndex = 11;
+            // 
+            // dateTimePickerStartTime
+            // 
+            dateTimePickerStartTime.Format = DateTimePickerFormat.Time;
+            dateTimePickerStartTime.Location = new Point(37, 156);
+            dateTimePickerStartTime.Name = "dateTimePickerStartTime";
+            dateTimePickerStartTime.Size = new Size(131, 23);
+            dateTimePickerStartTime.TabIndex = 13;
+            dateTimePickerStartTime.Value = new DateTime(2023, 12, 29, 0, 0, 0, 0);
+            // 
+            // labelStartTime
+            // 
+            labelStartTime.AutoSize = true;
+            labelStartTime.Location = new Point(37, 134);
+            labelStartTime.Name = "labelStartTime";
+            labelStartTime.Size = new Size(96, 15);
+            labelStartTime.TabIndex = 12;
+            labelStartTime.Text = "Начало фильма";
             // 
             // FilmSessionHostForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(417, 201);
+            Controls.Add(dateTimePickerStartTime);
+            Controls.Add(labelStartTime);
+            Controls.Add(comboBoxHallID);
             Controls.Add(dateTimePickerDuration);
-            Controls.Add(numericUpDownHallID);
             Controls.Add(buttonAdd);
             Controls.Add(labelDuration);
             Controls.Add(labelData);
             Controls.Add(labelFilmName);
             Controls.Add(labelHallID);
             Controls.Add(textBoxFilmName);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dateTimePickerDate);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "FilmSessionHostForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FilmSessionHostForm";
-            ((System.ComponentModel.ISupportInitialize)numericUpDownHallID).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePickerDate;
         private TextBox textBoxFilmName;
         private Label labelHallID;
         private Label labelFilmName;
         private Label labelData;
         private Label labelDuration;
         private Button buttonAdd;
-        private NumericUpDown numericUpDownHallID;
         private DateTimePicker dateTimePickerDuration;
+        private ComboBox comboBoxHallID;
+        private DateTimePicker dateTimePickerStartTime;
+        private Label labelStartTime;
     }
 }

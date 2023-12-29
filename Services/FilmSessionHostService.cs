@@ -15,6 +15,23 @@ namespace ProgCourse.Services
         private IBaseRepository<IFilmSessionEntity> _filmSessionRepository;
         private IBaseRepository<ICinemaHallEntity> _cinemaHallRepository;
 
+        public List<ICinemaHallEntity> ReservedHalls
+        {
+            get
+            {
+                List<ICinemaHallEntity> ids = new List<ICinemaHallEntity>();
+                foreach (var item in _cinemaHallRepository.GetAll())
+                {
+                    if (IsReservedSession(item.Number)) continue;
+
+                    ids.Add(item);
+
+                }
+
+                return ids;
+            }
+        }
+
         public FilmSessionHostService(IBaseRepository<IFilmSessionEntity> filmSessionRepository, IBaseRepository<ICinemaHallEntity> cinemaHallRepository)
         {
             _filmSessionRepository = filmSessionRepository;
@@ -27,25 +44,10 @@ namespace ProgCourse.Services
             if (filmName == string.Empty) return false;
             if (duration.Hour + duration.Minute <= 0) return false;
 
-            bool isExist = false;
+            
+            if (IsExistHall(hallID) == false) return false;
 
-            if (_cinemaHallRepository.GetAll().Count <= 0) return false;
-
-            foreach (var cinemaHall in _cinemaHallRepository.GetAll())
-            {
-                if (cinemaHall.Number == hallID)
-                {
-                    isExist = true;
-                    break;
-                }
-            }
-            if (isExist == false) return false;
-
-
-            foreach (var filmSession in _filmSessionRepository.GetAll())
-            {
-                if (filmSession.HallID == hallID) return false;
-            }
+            if (IsReservedSession(hallID)) return false;
 
             if (_filmSessionRepository.Add(new FilmSession(hallID, filmName, dateStart, duration)))
             {
@@ -56,7 +58,32 @@ namespace ProgCourse.Services
             return false;
         }
 
-        public bool ClearRepository()
+        private bool IsExistHall(int hallId)
+        {
+            if (_cinemaHallRepository.GetAll().Count <= 0) throw new Exception("Ноль кино-залов");
+
+            foreach (var cinemaHall in _cinemaHallRepository.GetAll())
+            {
+                if (cinemaHall.Number == hallId)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsReservedSession(int id)
+        {
+            foreach (var filmSession in _filmSessionRepository.GetAll())
+            {
+                if (filmSession.HallID == id) return true;
+            }
+
+            return false;
+        }
+
+        public bool ClearFilmSessionRepository()
         {
             _filmSessionRepository.RemoveAll();
             return _filmSessionRepository.Save();

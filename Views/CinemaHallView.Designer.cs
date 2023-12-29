@@ -112,7 +112,6 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "CinemaHallView";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "CinemaHallView";
             ResumeLayout(false);
         }

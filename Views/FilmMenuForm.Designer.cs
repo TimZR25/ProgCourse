@@ -41,7 +41,7 @@
             // 
             // buttonNavigate
             // 
-            buttonNavigate.Location = new Point(612, 309);
+            buttonNavigate.Location = new Point(541, 309);
             buttonNavigate.Name = "buttonNavigate";
             buttonNavigate.Size = new Size(144, 50);
             buttonNavigate.TabIndex = 0;
@@ -57,7 +57,7 @@
             listViewSessions.Location = new Point(12, 12);
             listViewSessions.MultiSelect = false;
             listViewSessions.Name = "listViewSessions";
-            listViewSessions.Size = new Size(594, 347);
+            listViewSessions.Size = new Size(520, 347);
             listViewSessions.TabIndex = 1;
             listViewSessions.UseCompatibleStateImageBehavior = false;
             listViewSessions.View = View.Details;
@@ -65,27 +65,27 @@
             // 
             // columnHeaderHallID
             // 
-            columnHeaderHallID.Text = "HallID";
+            columnHeaderHallID.Text = "Зал№";
             columnHeaderHallID.Width = 50;
             // 
             // columnHeaderFilm
             // 
-            columnHeaderFilm.Text = "Film";
+            columnHeaderFilm.Text = "Фильм";
             columnHeaderFilm.Width = 180;
             // 
             // columnHeaderDuration
             // 
-            columnHeaderDuration.Text = "Duration";
-            columnHeaderDuration.Width = 180;
+            columnHeaderDuration.Text = "Продолжительность";
+            columnHeaderDuration.Width = 140;
             // 
             // columnHeaderDate
             // 
-            columnHeaderDate.Text = "Date";
-            columnHeaderDate.Width = 180;
+            columnHeaderDate.Text = "Дата";
+            columnHeaderDate.Width = 140;
             // 
             // buttonRemove
             // 
-            buttonRemove.Location = new Point(612, 68);
+            buttonRemove.Location = new Point(541, 68);
             buttonRemove.Name = "buttonRemove";
             buttonRemove.Size = new Size(144, 50);
             buttonRemove.TabIndex = 2;
@@ -95,7 +95,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(612, 12);
+            buttonAdd.Location = new Point(538, 12);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(144, 50);
             buttonAdd.TabIndex = 3;
@@ -107,7 +107,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(763, 371);
+            ClientSize = new Size(697, 371);
             Controls.Add(buttonAdd);
             Controls.Add(buttonRemove);
             Controls.Add(listViewSessions);

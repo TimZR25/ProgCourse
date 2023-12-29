@@ -71,10 +71,10 @@ namespace ProgCourse.Views
         {
             base.OnLoad(e);
 
-            if (_presenter.LogInService.CurrentUser is null) 
-            { 
-                Close(); 
-                return; 
+            if (_presenter.LogInService.CurrentUser is null)
+            {
+                Close();
+                return;
             }
 
             switch (_presenter.LogInService.CurrentUser.LevelUserAccess)
@@ -103,10 +103,12 @@ namespace ProgCourse.Views
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-            int index = listViewSessions.SelectedItems[0].Index;
+            if (listViewSessions.SelectedItems.Count < 0) return;
 
-            _presenter.RemoveFilmSession(index);
+            int hallID = int.Parse(listViewSessions.SelectedItems[0].Text);
+            int indexView = listViewSessions.SelectedItems[0].Index;
 
+            _presenter.RemoveFilmSession(hallID, indexView);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)

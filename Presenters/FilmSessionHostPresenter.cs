@@ -11,14 +11,15 @@ namespace ProgCourse.Presenters
 {
     public class FilmSessionHostPresenter : IFilmSessionHostPresenter
     {
-        private IFilmSessionHostView? _view;
+        public IFilmSessionHostService FilmSessionHostService { get; }
 
-        private IFilmSessionHostService _filmSessionHostService;
+        private IFilmSessionHostView? _view;
 
         public FilmSessionHostPresenter(IFilmSessionHostService filmSessionHostService)
         {
-            _filmSessionHostService = filmSessionHostService;
+            FilmSessionHostService = filmSessionHostService;
         }
+
 
         public void Init(IFilmSessionHostView view)
         {
@@ -29,15 +30,18 @@ namespace ProgCourse.Presenters
         {
             if (_view is null) return false;
  
-            int HallId = (int)_view.HallID.Value;
+            int HallId = int.Parse(_view.HallID.Text);
 
             string filmName = _view.FilmName.Text;
 
             TimeOnly duration = new TimeOnly(_view.Duration.Value.Hour, _view.Duration.Value.Minute);
 
             DateTime date = _view.Date.Value;
+            DateTime time = _view.StartTime.Value;
 
-            return _filmSessionHostService.TryAddFilmSession(HallId, filmName, date, duration);
+            DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+
+            return FilmSessionHostService.TryAddFilmSession(HallId, filmName, dateTime, duration);
         }
     }
 }
