@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProgCourse.FilmSession.FilmSession" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>FilmSession\FilmSession.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProgCourse.FilmSession.FilmMenu.Presenter.FilmMenuPresenter" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAQAAAAAIAAAAAAAACACEAAAAAA=</HashCode>
+      <FileName>FilmSession\FilmMenu\Presenter\FilmMenuPresenter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProgCourse.FilmSession.FilmMenu.Service.FilmMenuService" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>FilmSession\FilmMenu\Service\FilmMenuService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProgCourse.FilmSession.FilmSessionHost.Presenter.FilmSessionHostPresenter" BaseTypeListCollapsed="true">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAA=</HashCode>
+      <FileName>FilmSession\FilmSessionHost\Presenter\FilmSessionHostPresenter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProgCourse.FilmSession.FilmSessionHost.Service.FilmSessionHostService" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgAAAAAAAACAAAAAAAAAIAAABAAABAAACAAAAAAAAA=</HashCode>
+      <FileName>FilmSession\FilmSessionHost\Service\FilmSessionHostService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ProgCourse.FilmSession.FilmMenu.Presenter.IFilmMenuPresenter" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAQAAAAAIAAAAAAAAAACEAAAAAA=</HashCode>
+      <FileName>FilmSession\FilmMenu\Presenter\IFilmMenuPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.FilmSession.FilmMenu.Service.IFilmMenuService" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>FilmSession\FilmMenu\Service\IFilmMenuService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.FilmSession.FilmMenu.View.IFilmMenuView">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FilmSession\FilmMenu\View\IFilmMenuView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.FilmSession.FilmSessionHost.Presenter.IFilmSessionHostPresenter" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>FilmSession\FilmSessionHost\Presenter\IFilmSessionHostPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.FilmSession.FilmSessionHost.Service.IFilmSessionHostService" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FilmSession\FilmSessionHost\Service\IFilmSessionHostService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.FilmSession.FilmSessionHost.View.IFilmSessionHostView">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAACAAAAAAAAAAAAIAAAAAABAAAAAEAAAAA=</HashCode>
+      <FileName>FilmSession\FilmSessionHost\View\IFilmSessionHostView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.Data.FilmSession.IFilmSessionEntity" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Data\FilmSession\IFilmSessionEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

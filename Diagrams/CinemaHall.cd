@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProgCourse.CinemaHallFolder.CinemaHallHost.Service.CinemaHallHostService" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CinemaHallFolder\CinemaHallHost\Service\CinemaHallHostService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProgCourse.CinemaHallFolder.Model.CinemaHall" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAihAAIAAAAAAIAAAkAIAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>CinemaHallFolder\Model\CinemaHall.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProgCourse.CinemaHallFolder.Presenter.CinemaHallPresenter" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAAAAAAAAAYAAAAQEAAAAAAAAAAACACACAAAAAAA=</HashCode>
+      <FileName>CinemaHallFolder\Presenter\CinemaHallPresenter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProgCourse.CinemaHallFolder.SeatFolder.Seat" BaseTypeListCollapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAgAAEAAAAABAAAAAAAAAAgAAAAAAAAgA=</HashCode>
+      <FileName>CinemaHallFolder\SeatFolder\Seat.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="ProgCourse.CinemaHallFolder.Service.CinemaHallService" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAEACAgAAAABAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>CinemaHallFolder\Service\CinemaHallService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ProgCourse.CinemaHallFolder.CinemaHallHost.Service.ICinemaHallHostService" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CinemaHallFolder\CinemaHallHost\Service\ICinemaHallHostService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.CinemaHallFolder.Model.ICinemaHall" Collapsed="true">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAChAAIAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>CinemaHallFolder\Model\ICinemaHall.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.CinemaHallFolder.Presenter.ICinemaHallPresenter" Collapsed="true">
+    <Position X="2.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAAAAAAAAAQAAAAQAAAAAAAAAAAACAAACAAAAAAA=</HashCode>
+      <FileName>CinemaHallFolder\Presenter\ICinemaHallPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.CinemaHallFolder.SeatFolder.ISeat" Collapsed="true">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAgAAEAAAAABAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>CinemaHallFolder\SeatFolder\ISeat.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.CinemaHallFolder.Service.ICinemaHallService" Collapsed="true">
+    <Position X="4.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAACAgAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>CinemaHallFolder\Service\ICinemaHallService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProgCourse.CinemaHallFolder.View.ICinemaHallView">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>CinemaHallFolder\View\ICinemaHallView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ProgCourse.CinemaHallFolder.SeatFolder.SeatState">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAABAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CinemaHallFolder\SeatFolder\SeatState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

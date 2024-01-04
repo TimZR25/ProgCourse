@@ -27,9 +27,7 @@ namespace ProgCourse.CinemaHallFolder.Presenter
 
         public bool InitCinemaHall(int cinemaHallNumber)
         {
-            ICinemaHall cinemaHall = new CinemaHall();
-
-            if (CinemaHallService.TryInitCinemaHall(cinemaHallNumber, out cinemaHall))
+            if (CinemaHallService.TryInitCinemaHall(cinemaHallNumber, out ICinemaHall cinemaHall))
             {
                 CinemaHall = cinemaHall;
 

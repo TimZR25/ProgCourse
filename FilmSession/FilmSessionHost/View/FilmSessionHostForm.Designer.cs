@@ -43,7 +43,7 @@
             // 
             // dateTimePickerDate
             // 
-            dateTimePickerDate.Location = new Point(260, 109);
+            dateTimePickerDate.Location = new Point(260, 91);
             dateTimePickerDate.Name = "dateTimePickerDate";
             dateTimePickerDate.Size = new Size(131, 23);
             dateTimePickerDate.TabIndex = 0;
@@ -77,7 +77,7 @@
             // labelData
             // 
             labelData.AutoSize = true;
-            labelData.Location = new Point(260, 91);
+            labelData.Location = new Point(260, 73);
             labelData.Name = "labelData";
             labelData.Size = new Size(79, 15);
             labelData.TabIndex = 6;
@@ -94,7 +94,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(260, 156);
+            buttonAdd.Location = new Point(260, 149);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(131, 30);
             buttonAdd.TabIndex = 8;
