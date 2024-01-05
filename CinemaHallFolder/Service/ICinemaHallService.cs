@@ -6,7 +6,7 @@ namespace ProgCourse.CinemaHallFolder.Service
     {
         int CurrentIndex { get; }
         bool TryInitCinemaHall(int cinemaHallNumber, out ICinemaHall cinemaHall);
-        public bool SaveRepository();
-        public bool TrySetIndexHall(int index);
+        bool TrySaveRepository();
+        bool TrySetIndexHall(int index);
     }
 }

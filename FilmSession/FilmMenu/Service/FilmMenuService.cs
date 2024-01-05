@@ -7,12 +7,12 @@ namespace ProgCourse.FilmSession.FilmMenu.Service
     {
         private IBaseRepository<IFilmSessionEntity> _repository;
 
+        public IReadOnlyCollection<IFilmSessionEntity> FilmSessionEntities => _repository.GetAll();
+
         public FilmMenuService(IBaseRepository<IFilmSessionEntity> repository)
         {
             _repository = repository;
         }
-
-        public IReadOnlyCollection<IFilmSessionEntity> FilmSessionEntities => _repository.GetAll();
 
         public bool TryRemoveFilmSession(int index)
         {

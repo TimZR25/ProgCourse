@@ -2,7 +2,7 @@
 {
     public interface ICinemaHallHostService
     {
-        bool ClearRepository();
+        bool TryClearRepository();
         bool TryAddCinemaHall(int hallNumber, int sizeSide, decimal costSeat);
     }
 }

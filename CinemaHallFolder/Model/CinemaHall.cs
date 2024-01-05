@@ -19,7 +19,7 @@ namespace ProgCourse.CinemaHallFolder.Model
 
                 foreach (var seat in Seats)
                 {
-                    if (seat.Value.SeatState == SeatState.Booked) seats.Add(seat.Value);
+                    if (seat.Value.State == SeatState.Booked) seats.Add(seat.Value);
                 }
 
                 return seats;
@@ -74,11 +74,12 @@ namespace ProgCourse.CinemaHallFolder.Model
 
         public CinemaHall() { }
 
-        public void SeatClick(int id)
+        public bool TryChangeSeatState(int id)
         {
-            if (Seats[id].SeatState == SeatState.Sold) return;
+            if (Seats[id].State == SeatState.Sold) return false;
 
-            Seats[id].Click();
+            Seats[id].ChangeState();
+            return true;
         }
 
         public void SeatChanged(object? sender, ISeat seat)
@@ -86,25 +87,25 @@ namespace ProgCourse.CinemaHallFolder.Model
             OnSeatChanged?.Invoke(seat);
         }
 
-        public bool BuyTickets()
+        public bool TryBuyTickets()
         {
             if (BookedSeats.Count <= 0) return false;
 
             foreach (ISeat seat in BookedSeats)
             {
-                seat.SeatState = SeatState.Sold;
+                seat.State = SeatState.Sold;
             }
 
             return true;
         }
 
-        public bool ViewClose()
+        public bool TryClearBookedSeats()
         {
             if (BookedSeats.Count <= 0) return false;
 
             foreach (ISeat seat in BookedSeats)
             {
-                seat.SeatState = SeatState.Freely;
+                seat.State = SeatState.Freely;
             }
 
             BookedSeats.Clear();

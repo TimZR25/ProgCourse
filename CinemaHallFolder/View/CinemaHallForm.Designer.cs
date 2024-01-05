@@ -1,6 +1,6 @@
 ﻿namespace ProgCourse.Views
 {
-    partial class CinemaHallView
+    partial class CinemaHallForm
     {
         /// <summary>
         /// Required designer variable.
@@ -97,7 +97,7 @@
             labelAmount.Text = "0";
             labelAmount.TextAlign = ContentAlignment.TopRight;
             // 
-            // CinemaHallView
+            // CinemaHallForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -111,8 +111,8 @@
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "CinemaHallView";
-            Text = "CinemaHallView";
+            Name = "CinemaHallForm";
+            Text = "Зал№";
             ResumeLayout(false);
         }
 

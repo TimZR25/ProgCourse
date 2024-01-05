@@ -28,10 +28,12 @@ namespace ProgCourse.CinemaHallFolder.CinemaHallHost.Service
             return false;
         }
 
-        public bool ClearRepository()
+        public bool TryClearRepository()
         {
-            _repository.RemoveAll();
-            return _repository.Save();
+            if (_repository.RemoveAll() == true)
+                return _repository.Save();
+
+            return false;
         }
     }
 }

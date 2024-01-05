@@ -6,6 +6,8 @@
 
         void Register(ViewType viewType, IView view);
 
+        void SetCurrentView(ViewType viewType);
+
         void Show(ViewType viewType);
     }
 }

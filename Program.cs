@@ -18,6 +18,7 @@ using ProgCourse.LogIn.View;
 using ProgCourse.SignUp.Presenter;
 using ProgCourse.SignUp.Service;
 using ProgCourse.SignUp.View;
+using ProgCourse.User;
 using ProgCourse.Views;
 
 namespace ProgCourse
@@ -32,12 +33,12 @@ namespace ProgCourse
         {
             ApplicationConfiguration.Initialize();
 
-            ViewsProvider viewsProvider = new ViewsProvider();
-            UserRepository userRepository = new JsonUserRepository("users.json");
-            CinemaHallRepository cinemaHallRepository = new JSONCinemaHallRepository("cinemaHalls.json");
-            FilmSessionRepository filmSessionRepository = new JSONFilmRepository("filmSessions.json");
-
-            DataManager dataManager = new DataManager(userRepository, cinemaHallRepository, filmSessionRepository);
+            IViewsProvider viewsProvider = new ViewsProvider();
+            IBaseRepository<IUserEntity> userRepository = new JsonUserRepository("users.json");
+            IBaseRepository<ICinemaHallEntity> cinemaHallRepository = new JSONCinemaHallRepository("cinemaHalls.json");
+            IBaseRepository<IFilmSessionEntity> filmSessionRepository = new JSONFilmRepository("filmSessions.json");
+            
+            IDataManager dataManager = new DataManager(userRepository, cinemaHallRepository, filmSessionRepository);
 
 
             ISignUpService signUpService = new SignUpService(dataManager.UserRepository);
@@ -60,7 +61,7 @@ namespace ProgCourse
 
             ILogInView logInView = new LogInForm(viewsProvider, logInPresenter);
             ISignUpView signUpView = new SignUpForm(viewsProvider, signUpPresenter);
-            ICinemaHallView cinemaHallView = new CinemaHallView(viewsProvider, cinemaHallPresenter);
+            ICinemaHallView cinemaHallView = new CinemaHallForm(viewsProvider, cinemaHallPresenter);
             IFilmMenuView filmMenuView = new FilmMenuForm(viewsProvider, filmMenuPresenter);
             IFilmSessionHostView filmSessionHostView = new FilmSessionHostForm(viewsProvider, filmSessionHostPresenter);
 

@@ -5,15 +5,14 @@ namespace ProgCourse.FilmSession.FilmSessionHost.Presenter
 {
     public class FilmSessionHostPresenter : IFilmSessionHostPresenter
     {
-        public IFilmSessionHostService FilmSessionHostService { get; }
-
         private IFilmSessionHostView? _view;
+
+        public IFilmSessionHostService FilmSessionHostService { get; }
 
         public FilmSessionHostPresenter(IFilmSessionHostService filmSessionHostService)
         {
             FilmSessionHostService = filmSessionHostService;
         }
-
 
         public void Init(IFilmSessionHostView view)
         {

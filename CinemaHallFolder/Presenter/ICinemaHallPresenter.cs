@@ -8,9 +8,9 @@ namespace ProgCourse.CinemaHallFolder.Presenter
     {
         ICinemaHallService CinemaHallService { get; }
         ICinemaHall? CinemaHall { get; set; }
-        void SeatClick(int id);
+        bool TryChangeSeatState(int id);
         void Init(ICinemaHallView view);
-        bool InitCinemaHall(int cinemaNumber);
-        bool BuyTickets();
+        bool TryInitCinemaHall(int cinemaNumber);
+        bool TryBuyTickets();
     }
 }

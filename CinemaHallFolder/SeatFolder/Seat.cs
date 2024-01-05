@@ -3,13 +3,13 @@
     public class Seat : ISeat
     {
         public int ID { get; }
-        private SeatState _seatState;
-        public SeatState SeatState
+        private SeatState _state;
+        public SeatState State
         {
-            get { return _seatState; }
+            get { return _state; }
             set
             {
-                _seatState = value;
+                _state = value;
                 OnStateChanged?.Invoke(this, this);
             }
         }
@@ -20,13 +20,13 @@
         public Seat(int id, SeatState typeSeat, decimal cost)
         {
             ID = id;
-            SeatState = typeSeat;
+            State = typeSeat;
             Cost = cost;
         }
 
-        public void Click()
+        public void ChangeState()
         {
-            SeatState = (SeatState)(((int)SeatState + 1) % 2);
+            State = (SeatState)(((int)State + 1) % 2);
         }
     }
 }

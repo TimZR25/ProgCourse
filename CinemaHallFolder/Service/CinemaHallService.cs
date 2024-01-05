@@ -36,7 +36,7 @@ namespace ProgCourse.CinemaHallFolder.Service
             return false;
         }
 
-        public bool SaveRepository()
+        public bool TrySaveRepository()
         {
             return _cinemaHallRepository.Save();
         }

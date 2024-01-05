@@ -25,7 +25,7 @@ namespace ProgCourse.CinemaHallFolder.Presenter
             _view.OnViewClosed += ViewClose;
         }
 
-        public bool InitCinemaHall(int cinemaHallNumber)
+        public bool TryInitCinemaHall(int cinemaHallNumber)
         {
             if (CinemaHallService.TryInitCinemaHall(cinemaHallNumber, out ICinemaHall cinemaHall))
             {
@@ -40,30 +40,32 @@ namespace ProgCourse.CinemaHallFolder.Presenter
             return false;
         }
 
-        public void SeatClick(int id)
+        public bool TryChangeSeatState(int id)
         {
-            CinemaHall?.SeatClick(id);
+            if (CinemaHall is null) return false;
+
+            return CinemaHall.TryChangeSeatState(id);
         }
 
         public void SeatStateChanged(ISeat seat)
         {
             if (CinemaHall is null) return;
 
-            _view?.ChangeSeatColor(seat.ID, seat.SeatState);
+            _view?.ChangeSeatColor(seat.ID, seat.State);
             _view?.ChangeTicketText(CinemaHall.BookedSeats.Count, CinemaHall.TicketsCost);
         }
 
-        public bool BuyTickets()
+        public bool TryBuyTickets()
         {
             if (CinemaHall?.BookedSeats is null) return false;
 
-            return CinemaHall.BuyTickets();
+            return CinemaHall.TryBuyTickets();
         }
 
         public void ViewClose()
         {
-            CinemaHall?.ViewClose();
-            CinemaHallService.SaveRepository();
+            CinemaHall?.TryClearBookedSeats();
+            CinemaHallService.TrySaveRepository();
         }
     }
 }

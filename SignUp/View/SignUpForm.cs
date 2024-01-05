@@ -47,7 +47,7 @@ namespace ProgCourse.Views
             labelError.Show();
         }
 
-        private void ResetFields(object? sender, EventArgs eventArgs)
+        private void ResetFields(object? sender, EventArgs e)
         {
             textBoxLogin.Text = string.Empty;
             textBoxPassword.Text = string.Empty;

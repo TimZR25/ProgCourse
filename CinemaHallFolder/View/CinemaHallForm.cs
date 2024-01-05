@@ -4,7 +4,7 @@ using ProgCourse.CinemaHallFolder.View;
 
 namespace ProgCourse.Views
 {
-    public partial class CinemaHallView : Form, ICinemaHallView
+    public partial class CinemaHallForm : Form, ICinemaHallView
     {
         public Dictionary<int, Button> SeatViews { get; set; } = new Dictionary<int, Button>();
 
@@ -20,7 +20,7 @@ namespace ProgCourse.Views
 
         private List<Control> _controls = new List<Control>();
 
-        public CinemaHallView(IViewsProvider viewProvider, ICinemaHallPresenter presenter)
+        public CinemaHallForm(IViewsProvider viewProvider, ICinemaHallPresenter presenter)
         {
             InitializeComponent();
 
@@ -82,11 +82,11 @@ namespace ProgCourse.Views
                         ForeColor = Color.White
                     };
 
-                    seatView.Click += (_, _) => { _presenter.SeatClick(numberSeat); };
+                    seatView.Click += (_, _) => { _presenter.TryChangeSeatState(numberSeat); };
 
                     SeatViews.Add(numberSeat, seatView);
 
-                    if (_presenter.CinemaHall != null) ChangeSeatColor(numberSeat, _presenter.CinemaHall.Seats[numberSeat].SeatState);
+                    if (_presenter.CinemaHall != null) ChangeSeatColor(numberSeat, _presenter.CinemaHall.Seats[numberSeat].State);
 
                     Controls.Add(seatView);
                     _controls.Add(seatView);
@@ -129,14 +129,14 @@ namespace ProgCourse.Views
 
         private void buttonBuy_Click(object sender, EventArgs e)
         {
-            _presenter.BuyTickets();
+            _presenter.TryBuyTickets();
         }
 
         protected override void OnActivated(EventArgs e)
         {
             base.OnLoad(e);
 
-            _presenter.InitCinemaHall(_presenter.CinemaHallService.CurrentIndex);
+            _presenter.TryInitCinemaHall(_presenter.CinemaHallService.CurrentIndex);
         }
     }
 }

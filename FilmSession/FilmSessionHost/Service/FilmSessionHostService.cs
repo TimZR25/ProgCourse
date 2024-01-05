@@ -36,7 +36,7 @@ namespace ProgCourse.FilmSession.FilmSessionHost.Service
         {
             if (hallID <= 0) return false;
             if (filmName == string.Empty) return false;
-            if (duration.Hour + duration.Minute <= 0) return false;
+            if (duration == TimeOnly.MinValue) return false;
 
 
             if (IsExistHall(hallID) == false) return false;
@@ -50,6 +50,12 @@ namespace ProgCourse.FilmSession.FilmSessionHost.Service
             }
 
             return false;
+        }
+
+        public bool TryClearFilmSessionRepository()
+        {
+            _filmSessionRepository.RemoveAll();
+            return _filmSessionRepository.Save();
         }
 
         private bool IsExistHall(int hallId)
@@ -75,12 +81,6 @@ namespace ProgCourse.FilmSession.FilmSessionHost.Service
             }
 
             return false;
-        }
-
-        public bool ClearFilmSessionRepository()
-        {
-            _filmSessionRepository.RemoveAll();
-            return _filmSessionRepository.Save();
         }
     }
 }

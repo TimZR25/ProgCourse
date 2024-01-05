@@ -11,7 +11,9 @@ namespace ProgCourse.Data
         public IBaseRepository<ICinemaHallEntity> CinemaHallRepository { get; set; }
         public IBaseRepository<IFilmSessionEntity> FilmSessionRepository { get; set; }
 
-        public DataManager(UserRepository userStorage, CinemaHallRepository cinemaHallRepository, FilmSessionRepository filmSessionRepository)
+        public DataManager(IBaseRepository<IUserEntity> userStorage, 
+            IBaseRepository<ICinemaHallEntity> cinemaHallRepository, 
+            IBaseRepository<IFilmSessionEntity> filmSessionRepository)
         {
             UserRepository = userStorage;
             CinemaHallRepository = cinemaHallRepository;

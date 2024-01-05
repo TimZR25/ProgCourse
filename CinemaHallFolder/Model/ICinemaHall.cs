@@ -6,10 +6,10 @@ namespace ProgCourse.CinemaHallFolder.Model
     public interface ICinemaHall : ICinemaHallEntity
     {
         decimal TicketsCost { get; }
-        event Action<ISeat>? OnSeatChanged;
         List<ISeat> BookedSeats { get; }
-        void SeatClick(int id);
-        bool BuyTickets();
-        bool ViewClose();
+        event Action<ISeat>? OnSeatChanged;
+        bool TryChangeSeatState(int id);
+        bool TryBuyTickets();
+        bool TryClearBookedSeats();
     }
 }
